@@ -31,6 +31,8 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_BASE_PATH: /aquapuel
+      - name: Conservar archivos internos de Next.js
+        run: touch dist/client/.nojekyll
       - name: Preparar Pages
         uses: actions/configure-pages@v5
       - name: Subir sitio estático
