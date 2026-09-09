@@ -1,0 +1,13 @@
+import type { Metadata } from 'next';
+import { Droplets, HeartHandshake, Leaf, ShieldCheck } from 'lucide-react';
+import { SiteFooter, SiteHeader } from '@/components/site-shell';
+import { ClosingCta, PageHero } from '@/components/marketing-blocks';
+
+export const metadata: Metadata = { title: 'Quiénes somos', description: 'Conocé la propuesta de Aquapuel y cómo cuidamos el agua que llega a vos.' };
+
+export default function AboutPage() {
+  return <main><SiteHeader /><PageHero eyebrow="Quiénes somos" title="Cuidamos lo esencial." accent="Todos los días." copy="Aquapuel nace con una idea simple: hacer que el agua de calidad esté cerca de las personas, de forma práctica y confiable." image="/media/planta-aquapuel.png" />
+    <section className="story section-pad"><div className="container split-grid"><div className="story-art"><img className="story-photo" src="/media/planta-aquapuel.png" alt="Bidones Aquapuel preparados para su distribución" /><img className="story-seal" src="/media/tratada-con-ozono.png" alt="Agua tratada con ozono" /></div><div className="story-copy"><span className="eyebrow"><span /> Nuestra manera de hacer</span><h2>Calidad que se siente en cada vaso.</h2><p>Trabajamos para que recibir agua sea algo fácil, claro y previsible. Desde el cuidado del producto hasta la coordinación de cada entrega, ponemos atención en los detalles que construyen confianza.</p><p>El resultado es un agua de mesa envasada baja en sodio, presentada en un formato de 12 litros pensado para acompañar el ritmo cotidiano.</p><div className="signature">AQUAPUEL <small>Siempre con vos</small></div></div></div></section>
+    <section className="values section-pad"><div className="container"><div className="section-heading"><span className="eyebrow light"><span /> Lo que nos mueve</span><h2>Una relación más<br /><em>clara con el agua.</em></h2></div><div className="value-grid"><article><Droplets /><span>01</span><h3>Pureza</h3><p>Tratamiento con ozono y una propuesta baja en sodio para el consumo cotidiano.</p></article><article><ShieldCheck /><span>02</span><h3>Confianza</h3><p>Cuidamos la calidad del producto y cada punto de contacto con nuestros clientes.</p></article><article><HeartHandshake /><span>03</span><h3>Cercanía</h3><p>Una atención simple y humana, tanto para hogares como para equipos de trabajo.</p></article><article><Leaf /><span>04</span><h3>Conciencia</h3><p>Bidones retornables que acompañan una forma más responsable de consumir.</p></article></div></div></section>
+    <ClosingCta title="Que nunca falte lo esencial." text="Contanos dónde necesitás Aquapuel y coordinemos una propuesta para vos." /><SiteFooter /></main>;
+}
