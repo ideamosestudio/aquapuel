@@ -48,8 +48,8 @@ export default function AboutPage() {
             </p>
             <p>
               El resultado es un agua de mesa envasada baja en sodio, presentada
-              en un formato de 12 litros pensado para acompañar el ritmo
-              cotidiano.
+              en bidones de 12 y 20 litros para acompañar el ritmo cotidiano de
+              cada hogar.
             </p>
             <div className="signature">
               AQUAPUEL <small>Siempre con vos</small>

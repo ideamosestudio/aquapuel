@@ -71,7 +71,20 @@ export function ClosingCta({
         </span>
         <h2>{title}</h2>
         <p>{text}</p>
-        {href.startsWith('http') ? <a className="button button-lime" href={href} target="_blank" rel="noreferrer">{button} <ArrowRight size={17} /></a> : <Link className="button button-lime" href={asset(href)}>{button} <ArrowRight size={17} /></Link>}
+        {href.startsWith('http') ? (
+          <a
+            className="button button-lime"
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {button} <ArrowRight size={17} />
+          </a>
+        ) : (
+          <Link className="button button-lime" href={asset(href)}>
+            {button} <ArrowRight size={17} />
+          </Link>
+        )}
       </div>
     </section>
   );

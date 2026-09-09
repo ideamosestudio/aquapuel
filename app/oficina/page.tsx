@@ -30,7 +30,12 @@ export default function OfficePage() {
         copy="Una solución práctica para oficinas, comercios y espacios de trabajo. Coordinamos el abastecimiento según el ritmo de tu equipo."
         image="/media/planta-aquapuel.png"
       >
-        <a className="button button-lime" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+        <a
+          className="button button-lime"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
           Hacé tu pedido <ArrowRight size={17} />
         </a>
       </PageHero>
@@ -122,7 +127,7 @@ export default function OfficePage() {
           />
           <div>
             <span className="eyebrow light">
-              <span /> Formato de 12 litros
+              <span /> Formatos de 12 y 20 litros
             </span>
             <h2>
               Listo para

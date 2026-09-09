@@ -15,7 +15,7 @@ import { WHATSAPP_URL } from '@/lib/contact';
 export const metadata: Metadata = {
   title: 'Agua para el hogar',
   description:
-    'Bidones Aquapuel de 12 litros con entrega coordinada para tu casa.',
+    'Bidones Aquapuel de 12 y 20 litros con entrega coordinada para tu casa.',
 };
 
 export default function HomeServicePage() {
@@ -26,10 +26,15 @@ export default function HomeServicePage() {
         eyebrow="Aquapuel en tu hogar"
         title="Agua fresca."
         accent="Casa feliz."
-        copy="Bidones de 12 litros, baja en sodio y con entrega coordinada. Una rutina simple para que en tu casa siempre haya agua."
+        copy="Bidones de 12 y 20 litros, baja en sodio y con entrega coordinada. Una rutina simple para que en tu casa siempre haya agua."
         image="/media/aquapuel-hogar.png"
       >
-        <a className="button button-lime" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+        <a
+          className="button button-lime"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
           Hacé tu pedido <ArrowRight size={17} />
         </a>
       </PageHero>
@@ -37,7 +42,10 @@ export default function HomeServicePage() {
         <div className="container product-grid">
           <div className="product-stage">
             <div className="stage-ring" />
-            <img src={asset('/media/bidon.png')} alt="Bidón Aquapuel de 12 litros" />
+            <img
+              src={asset('/media/bidon.png')}
+              alt="Bidón Aquapuel de 12 litros"
+            />
             <span className="mini-badge">
               <Heart size={17} /> Para compartir
             </span>
@@ -82,7 +90,12 @@ export default function HomeServicePage() {
         </div>
       </section>
       <section className="steps section-pad">
-        <div className="section-wave" style={{ backgroundImage: `url('${asset('/media/onda-marca.png')}')` }} />
+        <div
+          className="section-wave"
+          style={{
+            backgroundImage: `url('${asset('/media/onda-marca.png')}')`,
+          }}
+        />
         <div className="container">
           <div className="section-heading centered">
             <span className="eyebrow light">
@@ -126,10 +139,8 @@ export default function HomeServicePage() {
           </div>
           <div className="faq-list">
             <details open>
-              <summary>¿De cuántos litros es el bidón?</summary>
-              <p>
-                El bidón Aquapuel contiene 12 litros de agua de mesa envasada.
-              </p>
+              <summary>¿Qué tamaños de bidón tienen?</summary>
+              <p>Aquapuel está disponible en bidones de 12 y 20 litros.</p>
             </details>
             <details>
               <summary>¿Cómo coordino la entrega?</summary>
@@ -144,6 +155,18 @@ export default function HomeServicePage() {
                 Sí. En cada reposición se coordinan los bidones retornables para
                 mantener el circuito.
               </p>
+            </details>
+            <details>
+              <summary>¿Puedo pedir un dispenser?</summary>
+              <p>
+                Sí. Para clientes ofrecemos dispenser natural. Los equipos
+                frío-calor están sujetos a las condiciones del servicio y a
+                disponibilidad.
+              </p>
+            </details>
+            <details>
+              <summary>¿En qué horario realizan repartos?</summary>
+              <p>De lunes a viernes, de 8:00 a 16:00 hs.</p>
             </details>
           </div>
         </div>

@@ -1,14 +1,25 @@
 import Link from 'next/link';
 import {
   ArrowRight,
+  BadgeCheck,
   Check,
+  Clock,
   Droplets,
   Home as HomeIcon,
   Building2,
+  Filter,
+  MapPin,
+  RefreshCw,
+  Route,
+  ShieldCheck,
+  Sparkles,
+  Search,
+  Truck,
+  Waves,
 } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 import { asset } from '@/lib/assets';
-import { WHATSAPP_URL } from '@/lib/contact';
+import { ADDRESS, MAPS_EMBED_URL, MAPS_URL, WHATSAPP_URL } from '@/lib/contact';
 
 export default function Home() {
   return (
@@ -43,11 +54,16 @@ export default function Home() {
               <em>fluye con vos.</em>
             </h1>
             <p>
-              Agua de mesa envasada, baja en sodio y tratada con ozono. En tu
-              casa o en tu oficina, siempre cerca.
+              Agua envasada para tu hogar, con calidad cuidada, atención
+              cercana, precios competitivos y una entrega simple.
             </p>
             <div className="hero-actions">
-              <a className="button button-lime" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+              <a
+                className="button button-lime"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Hacé tu pedido <ArrowRight size={17} />
               </a>
               <Link className="text-link light-link" href={asset('/oficina')}>
@@ -101,8 +117,8 @@ export default function Home() {
       <section className="trust-strip" aria-label="Características">
         <div className="container trust-row">
           <p>
-            <strong>12 litros</strong>
-            <span>Formato rendidor</span>
+            <strong>12 y 20 litros</strong>
+            <span>Dos formatos rendidores</span>
           </p>
           <i />
           <p>
@@ -119,6 +135,161 @@ export default function Home() {
             <strong>En tu puerta</strong>
             <span>Entrega coordinada</span>
           </p>
+        </div>
+      </section>
+      <section id="calidad" className="purity-section section-pad">
+        <div className="container purity-grid">
+          <div className="purity-copy">
+            <span className="eyebrow">
+              <span /> Calidad desde el origen
+            </span>
+            <h2>
+              Un proceso integral.
+              <br />
+              <em>Calidad en cada etapa.</em>
+            </h2>
+            <p>
+              Purificamos y controlamos el agua desde su origen hasta el
+              envasado para ofrecer un producto confiable todos los días.
+            </p>
+            <div className="purity-list">
+              <article>
+                <RefreshCw />
+                <div>
+                  <strong>Ósmosis inversa</strong>
+                  <span>
+                    Membranas que permiten reducir impurezas y sales disueltas.
+                  </span>
+                </div>
+              </article>
+              <article>
+                <Filter />
+                <div>
+                  <strong>Arena y carbón activado</strong>
+                  <span>
+                    Sistemas de filtrado para continuar eliminando partículas,
+                    impurezas y olores.
+                  </span>
+                </div>
+              </article>
+              <article>
+                <Sparkles />
+                <div>
+                  <strong>Ozonización</strong>
+                  <span>
+                    El ozono contribuye a la desinfección y purificación del
+                    agua.
+                  </span>
+                </div>
+              </article>
+              <article>
+                <ShieldCheck />
+                <div>
+                  <strong>Iones de plata</strong>
+                  <span>
+                    Un refuerzo adicional para el tratamiento microbiológico.
+                  </span>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div className="formats-panel">
+            <span className="formats-kicker">Llenado de bidones</span>
+            <div className="formats-numbers">
+              <strong>12</strong>
+              <i>y</i>
+              <strong>20</strong>
+              <span>litros</span>
+            </div>
+            <p>
+              Elegí el formato que mejor se adapte al consumo de tu hogar.
+              También abastecemos oficinas y comercios.
+            </p>
+            <div className="format-details">
+              <span>
+                <b>12 L</b> Ideal para hogares, oficinas y comercios.
+              </span>
+              <span>
+                <b>20 L</b> Práctico para espacios de mayor consumo.
+              </span>
+            </div>
+            <img src={asset('/media/bidon.png')} alt="Bidón Aquapuel" />
+          </div>
+        </div>
+        <div className="container filling-band">
+          <Truck />
+          <div>
+            <span>Servicio para repartidores independientes</span>
+            <h3>También llenamos tus propios bidones.</h3>
+            <p>
+              Trabajamos con llenadores y repartidores que traen envases de
+              distintas marcas y gestionan su propia distribución.
+            </p>
+            <span className="filling-hours">
+              Lun. a vie. 8:00–16:00 · Sáb. 8:00–14:00
+            </span>
+          </div>
+          <a
+            className="button button-blue"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Consultar llenado <ArrowRight size={17} />
+          </a>
+        </div>
+      </section>
+      <section id="proceso" className="bottling-section section-pad">
+        <div className="container">
+          <div className="section-heading bottling-heading">
+            <span className="eyebrow">
+              <span /> Limpieza y envasado
+            </span>
+            <h2>
+              Control en cada bidón,
+              <br />
+              <em>antes de cada entrega.</em>
+            </h2>
+            <p>
+              Cada envase atraviesa una secuencia de inspección, limpieza,
+              lavado, llenado y control final antes de salir de la planta.
+            </p>
+          </div>
+          <div className="bottling-grid">
+            <article>
+              <span>01</span>
+              <Search />
+              <h3>Inspección</h3>
+              <p>
+                Verificamos el estado de cada bidón y descartamos unidades
+                dañadas o contaminadas.
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <Waves />
+              <h3>Limpieza exterior</h3>
+              <p>
+                Una cepilladora automática de cuatro cuerpos limpia la parte
+                superior, los laterales y la base.
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <RefreshCw />
+              <h3>Lavado y enjuague</h3>
+              <p>Prelavado, lavado, enjuague paracéptico y enjuague final.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <BadgeCheck />
+              <h3>Llenado y control</h3>
+              <p>
+                Llenado, tapado, control final, colocación de fecha y precinto
+                de seguridad.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
       <section className="choice-section section-pad">
@@ -155,7 +326,10 @@ export default function Home() {
                 </b>
               </div>
             </Link>
-            <Link href={asset('/oficina')} className="choice-card choice-office">
+            <Link
+              href={asset('/oficina')}
+              className="choice-card choice-office"
+            >
               <div
                 className="choice-image"
                 style={{
@@ -176,6 +350,171 @@ export default function Home() {
                 </b>
               </div>
             </Link>
+          </div>
+        </div>
+      </section>
+      <section id="dispenser" className="dispenser-section section-pad">
+        <div className="container dispenser-grid">
+          <div className="dispenser-art">
+            <div className="dispenser-ring">
+              <Droplets />
+            </div>
+            <img
+              src={asset('/media/bidon-invertido.png')}
+              alt="Bidón Aquapuel para dispenser"
+            />
+          </div>
+          <div className="dispenser-copy">
+            <span className="eyebrow light">
+              <span /> Para clientes Aquapuel
+            </span>
+            <h2>
+              Bidones de 12 y 20 L<br />
+              <em>con dispenser natural.</em>
+            </h2>
+            <p>
+              Una solución simple y práctica para servir agua en tu casa, con
+              entregas coordinadas según tu consumo.
+            </p>
+            <div className="dispenser-options">
+              <span>
+                <Droplets /> Dispenser natural
+              </span>
+              <span>
+                <Check /> Bidones de 12 litros
+              </span>
+              <span>
+                <Check /> Bidones de 20 litros
+              </span>
+            </div>
+            <p className="dispenser-note">
+              Los equipos frío-calor se evalúan según consumo, antigüedad,
+              ubicación y disponibilidad. Consultanos para conocer las opciones
+              vigentes.
+            </p>
+            <a
+              className="button button-lime"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Consultar servicio <ArrowRight size={17} />
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="reparto" className="delivery-section">
+        <div
+          className="delivery-visual"
+          style={{
+            backgroundImage: `url('${asset('/media/reparto-aquapuel.png')}')`,
+          }}
+        >
+          <div className="delivery-shade" />
+          <div className="container delivery-inner">
+            <div className="delivery-copy">
+              <span className="eyebrow light">
+                <span /> Reparto a domicilio
+              </span>
+              <h2>
+                Tu agua llega
+                <br />
+                <em>hasta vos.</em>
+              </h2>
+              <p>
+                Coordinamos entregas para hogares, oficinas y comercios.
+                Consultanos por cobertura en tu zona.
+              </p>
+              <div className="delivery-points">
+                <span>
+                  <Route /> Entrega coordinada
+                </span>
+                <span>
+                  <Check /> Bidones retornables
+                </span>
+                <span>
+                  <Clock /> Lun. a vie. 8:00–16:00
+                </span>
+              </div>
+              <a
+                className="button button-lime"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Consultar mi zona <ArrowRight size={17} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="pedido" className="home-order section-pad">
+        <div className="container order-card">
+          <div>
+            <span className="eyebrow light">
+              <span /> Pedí Aquapuel
+            </span>
+            <h2>
+              ¿Cuántos bidones
+              <br />
+              <em>necesitás?</em>
+            </h2>
+            <p>
+              Completá los datos de entrega y recibí una respuesta para
+              coordinar tu pedido.
+            </p>
+          </div>
+          <div className="order-actions">
+            <Link className="button button-lime" href={asset('/contacto')}>
+              Armar mi pedido <ArrowRight size={17} />
+            </Link>
+            <a
+              className="button button-ghost-light"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pedir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className="home-location">
+        <div className="container home-location-grid">
+          <div className="home-location-copy">
+            <span className="eyebrow">
+              <span /> Dónde estamos
+            </span>
+            <h2>
+              Desde Cuartel V,
+              <br />
+              más cerca de tu casa.
+            </h2>
+            <p>
+              Estamos en el Parque Industrial Desarrollo Productivo, Provincia
+              de Buenos Aires.
+            </p>
+            <a
+              className="location-line"
+              href={MAPS_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MapPin />
+              <span>
+                <strong>Ver en Google Maps</strong>
+                {ADDRESS}
+              </span>
+            </a>
+          </div>
+          <div className="map-frame home-map">
+            <iframe
+              src={MAPS_EMBED_URL}
+              title="Ubicación de Aquapuel en Google Maps"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

@@ -1,7 +1,22 @@
 import Link from 'next/link';
-import { ArrowUpRight, MapPin, Menu, MessageCircle, Phone } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  Menu,
+  MessageCircle,
+  Phone,
+} from 'lucide-react';
 import { asset } from '@/lib/assets';
-import { ADDRESS, MAPS_URL, PHONE_DISPLAY, WHATSAPP_URL } from '@/lib/contact';
+import {
+  ADDRESS,
+  EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  MAPS_URL,
+  PHONE_DISPLAY,
+  WHATSAPP_URL,
+} from '@/lib/contact';
 
 export function SiteHeader() {
   return (
@@ -15,8 +30,14 @@ export function SiteHeader() {
           <Link href={asset('/quienes-somos')}>Quiénes somos</Link>
           <Link href={asset('/hogar')}>Para el hogar</Link>
           <Link href={asset('/oficina')}>Para la oficina</Link>
+          <Link href={asset('/contacto')}>Contacto</Link>
         </nav>
-        <a className="nav-cta" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+        <a
+          className="nav-cta"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
           Hacé tu pedido <ArrowUpRight size={16} />
         </a>
         <details className="mobile-menu">
@@ -39,7 +60,13 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <a className="floating-order" href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="Hacé tu pedido por WhatsApp">
+      <a
+        className="floating-order"
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Hacé tu pedido por WhatsApp"
+      >
         <span className="order-ripple" />
         <MessageCircle size={21} />
         <b>Hacé tu pedido</b>
@@ -57,8 +84,15 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">Hablemos</span>
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"><Phone size={16} /> {PHONE_DISPLAY}</a>
-          <a href={MAPS_URL} target="_blank" rel="noreferrer"><MapPin size={16} /> {ADDRESS}</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            <Phone size={16} /> {PHONE_DISPLAY}
+          </a>
+          <a href={MAPS_URL} target="_blank" rel="noreferrer">
+            <MapPin size={16} /> {ADDRESS}
+          </a>
+          <a href={`mailto:${EMAIL}`}>
+            <Mail size={16} /> {EMAIL}
+          </a>
           <Link href={asset('/contacto')}>Ver contacto</Link>
         </div>
         <div className="footer-stamp">
@@ -66,11 +100,29 @@ export function SiteFooter() {
             src={asset('/media/tratada-con-ozono.png')}
             alt="Tratada con ozono"
           />
+          <div className="social-links">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Aquapuel en Instagram"
+            >
+              <span aria-hidden="true">ig</span>
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Aquapuel en Facebook"
+            >
+              <span aria-hidden="true">f</span>
+            </a>
+          </div>
         </div>
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} AQUAPUEL</span>
-        <span>Agua de mesa envasada · 12 L</span>
+        <span>Agua de mesa envasada · 12 y 20 L</span>
       </div>
     </footer>
   );
