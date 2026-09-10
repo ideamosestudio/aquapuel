@@ -313,7 +313,7 @@ export default function Home() {
           <ArrowRight size={17} />
         </a>
       </div>
-      <section className="choice-section section-pad">
+      <section id="experiencias" className="choice-section section-pad">
         <div className="container">
           <div className="section-heading centered">
             <span className="eyebrow">
@@ -351,7 +351,7 @@ export default function Home() {
               <div
                 className="choice-image"
                 style={{
-                  backgroundImage: `url('${asset('/media/planta-aquapuel.png')}')`,
+                  backgroundImage: `url('${asset('/media/dispenser-oficina.png')}')`,
                 }}
               />
               <div className="choice-overlay" />
