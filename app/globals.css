@@ -1270,7 +1270,7 @@ select {
   }
 }
 
-@media (min-width: 1400px) and (min-height: 850px) {
+@media (min-width: 1400px) {
   .container {
     width: min(1480px, calc(100% - 96px));
   }
@@ -1280,7 +1280,7 @@ select {
   }
   .hero-product {
     height: calc(100% - 76px);
-    transform: translateY(-175px);
+    transform: translateY(-230px);
   }
   .hero-product img {
     width: min(730px, 45vw);
