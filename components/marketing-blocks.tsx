@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { asset } from '@/lib/assets';
 import { WHATSAPP_URL } from '@/lib/contact';
@@ -81,9 +80,9 @@ export function ClosingCta({
             {button} <ArrowRight size={17} />
           </a>
         ) : (
-          <Link className="button button-lime" href={asset(href)}>
+          <a className="button button-lime" href={asset(href)}>
             {button} <ArrowRight size={17} />
-          </Link>
+          </a>
         )}
       </div>
     </section>

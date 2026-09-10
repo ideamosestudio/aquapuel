@@ -292,7 +292,7 @@ select {
   display: flex;
   gap: 22px;
   color: #bcdcf7;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 650;
 }
 .hero-points span {
@@ -301,6 +301,9 @@ select {
   gap: 6px;
 }
 .hero-points svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
   color: var(--lime);
 }
 .hero-product {
@@ -441,7 +444,7 @@ select {
 }
 .trust-row span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .trust-row i {
   width: 1px;
@@ -551,7 +554,11 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: 13px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 999px;
+  font-size: 14px;
 }
 .choice-content b svg {
   transition: transform 0.3s ease;
@@ -632,12 +639,12 @@ select {
 }
 .purity-list strong {
   color: var(--navy);
-  font-size: 15px;
+  font-size: 17px;
 }
 .purity-list span {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.55;
 }
 .formats-panel {
@@ -715,12 +722,12 @@ select {
   align-items: center;
   gap: 10px;
   color: #d6efff;
-  font-size: 11px;
+  font-size: 13px;
 }
 .format-details b {
   min-width: 43px;
   color: var(--lime);
-  font-size: 15px;
+  font-size: 16px;
 }
 .formats-panel > img {
   position: absolute;
@@ -758,25 +765,25 @@ select {
   color: var(--blue);
   text-transform: uppercase;
   letter-spacing: 0.13em;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 850;
 }
 .filling-band h3 {
   margin: 5px 0;
   color: var(--navy);
-  font-size: 22px;
+  font-size: 24px;
 }
 .filling-band p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.55;
 }
 .filling-band .filling-hours {
   display: block;
   margin-top: 8px;
   color: var(--blue);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: none;
 }
@@ -856,7 +863,7 @@ select {
 .bottling-grid p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
 }
 .dispenser-section {
@@ -943,7 +950,7 @@ select {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 750;
 }
 .dispenser-options svg {
@@ -951,7 +958,8 @@ select {
   color: var(--lime);
 }
 .dispenser-note {
-  font-size: 12px !important;
+  margin-bottom: 28px !important;
+  font-size: 14px !important;
   color: #9fc9e8 !important;
 }
 .delivery-visual {
@@ -991,7 +999,7 @@ select {
   align-items: center;
   gap: 8px;
   color: #dff3ff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 750;
 }
 .delivery-points svg {
@@ -1004,13 +1012,21 @@ select {
 .order-card {
   position: relative;
   overflow: hidden;
-  padding: 70px 74px;
-  display: flex;
-  align-items: flex-end;
+  padding: 76px 82px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   justify-content: space-between;
   gap: 50px;
   border-radius: 34px;
-  background: linear-gradient(125deg, #003a87, #067dcc);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background:
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(44, 205, 255, 0.28),
+      transparent 28%
+    ),
+    linear-gradient(125deg, #002e78, #007fcf);
   box-shadow: 0 35px 85px rgba(0, 65, 145, 0.2);
 }
 .order-card:after {
@@ -1030,11 +1046,21 @@ select {
 .order-card h2 {
   margin-bottom: 14px;
 }
+.order-card h2 em {
+  color: var(--lime);
+}
 .order-actions {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  min-width: 230px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 270px;
+}
+.order-actions .button {
+  width: 270px;
+  min-height: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
 }
 .button-ghost-light {
   color: #fff;
@@ -1067,6 +1093,24 @@ select {
 }
 .home-location-copy .location-line {
   margin-top: 26px;
+}
+
+.choice-card .choice-content b,
+.page-hero-copy > .button,
+.dispenser-copy > .button,
+.delivery-copy > .button,
+.closing-inner > .button,
+.office-banner .button {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+}
+
+.page-hero-copy > .button,
+.dispenser-copy > .button,
+.delivery-copy > .button,
+.closing-inner > .button,
+.office-banner .button {
+  min-height: 54px;
+  padding-inline: 25px;
 }
 .home-map {
   min-height: 430px;
@@ -1236,6 +1280,7 @@ select {
   }
   .hero-product {
     height: calc(100% - 76px);
+    transform: translateY(-175px);
   }
   .hero-product img {
     width: min(730px, 45vw);
@@ -1251,6 +1296,7 @@ select {
   }
   .hero-copy {
     padding-bottom: 0;
+    transform: translateY(-65px);
   }
 }
 
@@ -1355,7 +1401,7 @@ select {
   .order-card {
     padding: 58px 48px;
     align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
   .order-actions {
     flex-direction: row;
@@ -1601,11 +1647,11 @@ select {
   display: grid;
   gap: 3px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
 }
 .location-line strong {
   color: var(--navy);
-  font-size: 14px;
+  font-size: 16px;
 }
 .map-frame {
   min-height: 470px;
@@ -1834,7 +1880,7 @@ select {
 .benefit-grid p {
   margin: 0;
   color: #b6d0e8;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65;
 }
 .closing-cta {
@@ -1993,12 +2039,12 @@ select {
 .feature-list span {
   display: grid;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   gap: 4px;
 }
 .feature-list strong {
   color: var(--navy);
-  font-size: 15px;
+  font-size: 17px;
 }
 .steps {
   position: relative;
@@ -2145,7 +2191,10 @@ select {
 }
 .office-floating span {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
+}
+.office-grid .text-link {
+  margin-top: 26px;
 }
 .business-benefits {
   position: relative;
@@ -2258,12 +2307,12 @@ select {
 .contact-cards span {
   display: grid;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   gap: 3px;
 }
 .contact-cards strong {
   color: var(--navy);
-  font-size: 14px;
+  font-size: 16px;
 }
 .form-wrap {
   padding: 38px;
@@ -2306,7 +2355,7 @@ select {
 }
 .field label {
   color: var(--navy);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
 }
 .field input,

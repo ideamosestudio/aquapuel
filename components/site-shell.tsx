@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {
   ArrowUpRight,
   Mail,
@@ -22,15 +21,15 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container nav-wrap">
-        <Link href={asset('/')} className="brand" aria-label="Aquapuel, inicio">
+        <a href={asset('/')} className="brand" aria-label="Aquapuel, inicio">
           <img src={asset('/media/logo-blanco.png')} alt="Aquapuel" />
-        </Link>
+        </a>
         <nav className="desktop-nav" aria-label="Navegación principal">
-          <Link href={asset('/')}>Inicio</Link>
-          <Link href={asset('/quienes-somos')}>Quiénes somos</Link>
-          <Link href={asset('/hogar')}>Para el hogar</Link>
-          <Link href={asset('/oficina')}>Para la oficina</Link>
-          <Link href={asset('/contacto')}>Contacto</Link>
+          <a href={asset('/')}>Inicio</a>
+          <a href={asset('/quienes-somos')}>Quiénes somos</a>
+          <a href={asset('/hogar')}>Para el hogar</a>
+          <a href={asset('/oficina')}>Para la oficina</a>
+          <a href={asset('/contacto')}>Contacto</a>
         </nav>
         <a
           className="nav-cta"
@@ -45,11 +44,11 @@ export function SiteHeader() {
             <Menu size={23} />
           </summary>
           <nav>
-            <Link href={asset('/')}>Inicio</Link>
-            <Link href={asset('/quienes-somos')}>Quiénes somos</Link>
-            <Link href={asset('/hogar')}>Para el hogar</Link>
-            <Link href={asset('/oficina')}>Para la oficina</Link>
-            <Link href={asset('/contacto')}>Contactanos</Link>
+            <a href={asset('/')}>Inicio</a>
+            <a href={asset('/quienes-somos')}>Quiénes somos</a>
+            <a href={asset('/hogar')}>Para el hogar</a>
+            <a href={asset('/oficina')}>Para la oficina</a>
+            <a href={asset('/contacto')}>Contactanos</a>
           </nav>
         </details>
       </div>
@@ -78,9 +77,9 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">Explorá</span>
-          <Link href={asset('/quienes-somos')}>Quiénes somos</Link>
-          <Link href={asset('/hogar')}>Para el hogar</Link>
-          <Link href={asset('/oficina')}>Para la oficina</Link>
+          <a href={asset('/quienes-somos')}>Quiénes somos</a>
+          <a href={asset('/hogar')}>Para el hogar</a>
+          <a href={asset('/oficina')}>Para la oficina</a>
         </div>
         <div>
           <span className="footer-label">Hablemos</span>
@@ -93,7 +92,7 @@ export function SiteFooter() {
           <a href={`mailto:${EMAIL}`}>
             <Mail size={16} /> {EMAIL}
           </a>
-          <Link href={asset('/contacto')}>Ver contacto</Link>
+          <a href={asset('/contacto')}>Ver contacto</a>
         </div>
         <div className="footer-stamp">
           <img

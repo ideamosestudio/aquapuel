@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   ArrowRight,
   BriefcaseBusiness,
@@ -55,9 +54,9 @@ export default function OfficePage() {
               sumar tareas innecesarias. Una respuesta clara para operaciones
               grandes o pequeñas.
             </p>
-            <Link href={asset('/contacto')} className="text-link">
+            <a href={asset('/contacto')} className="text-link">
               Conversemos sobre tu espacio <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
           <div className="office-photo">
             <img

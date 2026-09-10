@@ -1,8 +1,6 @@
-import Link from 'next/link';
 import {
   ArrowRight,
   BadgeCheck,
-  Check,
   Clock,
   Droplets,
   Home as HomeIcon,
@@ -66,19 +64,19 @@ export default function Home() {
               >
                 Hacé tu pedido <ArrowRight size={17} />
               </a>
-              <Link className="text-link light-link" href={asset('/oficina')}>
+              <a className="text-link light-link" href={asset('/oficina')}>
                 Soluciones para empresas <ArrowRight size={15} />
-              </Link>
+              </a>
             </div>
             <div className="hero-points" aria-label="Beneficios principales">
               <span>
-                <Check size={14} /> Baja en sodio
+                <ShieldCheck /> Baja en sodio
               </span>
               <span>
-                <Check size={14} /> Tratada con ozono
+                <Sparkles /> Tratada con ozono
               </span>
               <span>
-                <Check size={14} /> Entrega programada
+                <Truck /> Entrega programada
               </span>
             </div>
           </div>
@@ -305,7 +303,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="choice-grid">
-            <Link href={asset('/hogar')} className="choice-card choice-home">
+            <a href={asset('/hogar')} className="choice-card choice-home">
               <div
                 className="choice-image"
                 style={{
@@ -325,11 +323,8 @@ export default function Home() {
                   Conocé el servicio <ArrowRight size={17} />
                 </b>
               </div>
-            </Link>
-            <Link
-              href={asset('/oficina')}
-              className="choice-card choice-office"
-            >
+            </a>
+            <a href={asset('/oficina')} className="choice-card choice-office">
               <div
                 className="choice-image"
                 style={{
@@ -349,7 +344,7 @@ export default function Home() {
                   Ver planes para empresas <ArrowRight size={17} />
                 </b>
               </div>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -381,10 +376,10 @@ export default function Home() {
                 <Droplets /> Dispenser natural
               </span>
               <span>
-                <Check /> Bidones de 12 litros
+                <ShieldCheck /> Bidones de 12 litros
               </span>
               <span>
-                <Check /> Bidones de 20 litros
+                <ShieldCheck /> Bidones de 20 litros
               </span>
             </div>
             <p className="dispenser-note">
@@ -430,7 +425,7 @@ export default function Home() {
                   <Route /> Entrega coordinada
                 </span>
                 <span>
-                  <Check /> Bidones retornables
+                  <ShieldCheck /> Bidones retornables
                 </span>
                 <span>
                   <Clock /> Lun. a vie. 8:00–16:00
@@ -465,9 +460,9 @@ export default function Home() {
             </p>
           </div>
           <div className="order-actions">
-            <Link className="button button-lime" href={asset('/contacto')}>
+            <a className="button button-lime" href={asset('/contacto')}>
               Armar mi pedido <ArrowRight size={17} />
-            </Link>
+            </a>
             <a
               className="button button-ghost-light"
               href={WHATSAPP_URL}
