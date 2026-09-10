@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import {
   ArrowUpRight,
   Mail,
@@ -5,6 +8,7 @@ import {
   Menu,
   MessageCircle,
   Phone,
+  X,
 } from 'lucide-react';
 import { asset } from '@/lib/assets';
 import {
@@ -18,8 +22,17 @@ import {
 } from '@/lib/contact';
 
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const updateHeader = () => setScrolled(window.scrollY > 24);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    return () => window.removeEventListener('scroll', updateHeader);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="container nav-wrap">
         <a href={asset('/')} className="brand" aria-label="Aquapuel, inicio">
           <img src={asset('/media/logo-blanco.png')} alt="Aquapuel" />
@@ -41,7 +54,8 @@ export function SiteHeader() {
         </a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menú">
-            <Menu size={23} />
+            <Menu className="menu-open-icon" size={23} />
+            <X className="menu-close-icon" size={25} />
           </summary>
           <nav>
             <a href={asset('/')}>Inicio</a>

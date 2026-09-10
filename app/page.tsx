@@ -7,6 +7,7 @@ import {
   Building2,
   Filter,
   MapPin,
+  MessageCircle,
   RefreshCw,
   Route,
   ShieldCheck,
@@ -135,6 +136,17 @@ export default function Home() {
           </p>
         </div>
       </section>
+      <div className="mobile-order-break">
+        <a
+          className="button button-lime"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MessageCircle size={19} /> Hacé tu pedido
+          <ArrowRight size={17} />
+        </a>
+      </div>
       <section id="calidad" className="purity-section section-pad">
         <div className="container purity-grid">
           <div className="purity-copy">
@@ -290,6 +302,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="mobile-order-break mobile-order-break-blue">
+        <a
+          className="button button-blue"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <MessageCircle size={19} /> Hacé tu pedido
+          <ArrowRight size={17} />
+        </a>
+      </div>
       <section className="choice-section section-pad">
         <div className="container">
           <div className="section-heading centered">
