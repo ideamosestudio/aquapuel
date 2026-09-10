@@ -1279,12 +1279,12 @@ select {
     padding-top: 70px;
   }
   .hero-product {
-    height: calc(100% - 76px);
-    transform: translateY(-230px);
+    height: calc(100% - 120px);
+    transform: translateY(-160px);
   }
   .hero-product img {
-    width: min(730px, 45vw);
-    max-height: 108%;
+    width: min(590px, 52vw);
+    max-height: 90%;
   }
   .note-one {
     top: 27%;
