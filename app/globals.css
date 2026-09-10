@@ -1316,6 +1316,9 @@ select {
 }
 
 @media (max-width: 900px) {
+  .site-header {
+    z-index: 100;
+  }
   .container {
     width: min(100% - 32px, 700px);
   }
