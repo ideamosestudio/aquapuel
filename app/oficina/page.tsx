@@ -1,16 +1,29 @@
 import type { Metadata } from 'next';
 import {
   ArrowRight,
-  BriefcaseBusiness,
-  CalendarClock,
   CircleCheckBig,
-  Handshake,
+  Flame,
+  Gauge,
+  Lightbulb,
+  Snowflake,
   Users,
 } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 import { ClosingCta, PageHero } from '@/components/marketing-blocks';
 import { asset } from '@/lib/assets';
-import { WHATSAPP_URL } from '@/lib/contact';
+
+const officeWhatsapp = (message: string) =>
+  `https://wa.me/5491173643736?text=${encodeURIComponent(message)}`;
+
+const HERO_WHATSAPP = officeWhatsapp(
+  'Hola Aquapuel, quiero consultar por el dispenser frío/calor para mi empresa.',
+);
+const DETAIL_WHATSAPP = officeWhatsapp(
+  'Hola Aquapuel, quiero recibir más información sobre el dispenser frío/calor.',
+);
+const AVAILABILITY_WHATSAPP = officeWhatsapp(
+  'Hola Aquapuel, quiero consultar disponibilidad y condiciones del dispenser frío/calor para mi empresa.',
+);
 
 export const metadata: Metadata = {
   title: 'Agua para oficinas',
@@ -20,53 +33,85 @@ export const metadata: Metadata = {
 
 export default function OfficePage() {
   return (
-    <main>
+    <main className="office-page">
       <SiteHeader />
       <PageHero
-        eyebrow="Aquapuel para empresas"
-        title="Equipos hidratados."
-        accent="Días que fluyen."
-        copy="Una solución práctica para oficinas, comercios y espacios de trabajo. Coordinamos el abastecimiento según el ritmo de tu equipo."
-        image="/media/planta-aquapuel.png"
+        eyebrow="AQUAPUEL PARA EMPRESAS"
+        title="Agua fría y caliente."
+        accent="Siempre lista para tu equipo."
+        copy="Equipá tu oficina o comercio con un dispenser práctico y confiable, acompañado por la calidad de los bidones Aquapuel."
+        image="/media/office-aquadisp-hero.webp"
+        imageAlt="Dispenser de agua Aquapuel en una oficina"
       >
         <a
           className="button button-lime"
-          href={WHATSAPP_URL}
+          href={HERO_WHATSAPP}
           target="_blank"
           rel="noreferrer"
         >
-          Hacé tu pedido <ArrowRight size={17} />
+          Consultar por el dispenser <ArrowRight size={17} />
         </a>
       </PageHero>
       <section className="office-intro section-pad">
         <div className="container office-grid">
           <div>
             <span className="eyebrow">
-              <span /> Nos adaptamos a tu equipo
+              <span /> DISPENSER FRÍO/CALOR
             </span>
             <h2>
-              Agua disponible.
+              Agua bien fría.
               <br />
-              Gestión simple.
+              Agua caliente al instante.
             </h2>
             <p>
-              Planificamos la entrega para que tu equipo tenga Aquapuel sin
-              sumar tareas innecesarias. Una respuesta clara para operaciones
-              grandes o pequeñas.
+              El Aquadisp 40LB brinda agua realmente fría gracias a su sistema
+              de refrigeración por motocompresor, no por plaqueta. Además,
+              cuenta con una caldera de acero inoxidable para disponer de agua
+              caliente durante toda la jornada.
             </p>
-            <a href={asset('/contacto')} className="text-link">
-              Conversemos sobre tu espacio <ArrowRight size={16} />
+            <ul className="office-spec-list">
+              <li>
+                <CircleCheckBig /> Refrigeración de hasta 12 litros por hora.
+              </li>
+              <li>
+                <CircleCheckBig /> Calentamiento de hasta 8 litros por hora.
+              </li>
+              <li>
+                <CircleCheckBig /> Temperaturas de 5 °C a 95 °C.
+              </li>
+              <li>
+                <CircleCheckBig /> Compatible con bidones de 10, 12 y 20
+                litros.
+              </li>
+              <li>
+                <CircleCheckBig /> Dos canillas e indicadores LED.
+              </li>
+              <li>
+                <CircleCheckBig /> Bandeja recolectora incorporada.
+              </li>
+            </ul>
+            <p className="office-use-copy">
+              Una solución práctica para oficinas, comercios, salas de reunión
+              y espacios de atención al público.
+            </p>
+            <a
+              href={DETAIL_WHATSAPP}
+              className="button button-blue office-detail-cta"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Conocé el dispenser <ArrowRight size={16} />
             </a>
           </div>
           <div className="office-photo">
             <img
-              src={asset('/media/planta-aquapuel.png')}
-              alt="Stock de bidones Aquapuel"
+              src={asset('/media/office-aquadisp-detail.webp')}
+              alt="Persona sirviéndose agua fría en un dispenser Aquapuel"
             />
             <div className="office-floating">
               <Users />
-              <strong>Para equipos</strong>
-              <span>Servicio flexible</span>
+              <strong>Frío + calor</strong>
+              <span>Listo para tu equipo</span>
             </div>
           </div>
         </div>
@@ -75,44 +120,43 @@ export default function OfficePage() {
         <div className="container">
           <div className="section-heading centered">
             <span className="eyebrow light">
-              <span /> Un servicio que acompaña
+              <span /> COMODIDAD TODOS LOS DÍAS
             </span>
             <h2>
-              Menos gestión.
-              <br />
-              <em>Más bienestar.</em>
+              Todo lo que tu espacio necesita.
             </h2>
           </div>
           <div className="benefit-grid">
             <article>
-              <BriefcaseBusiness />
-              <h3>A medida</h3>
+              <Snowflake />
+              <h3>Realmente fría</h3>
               <p>
-                Una propuesta pensada según el tamaño y consumo de tu espacio.
+                Su sistema con motocompresor enfría el agua hasta 5 °C y ofrece
+                un rendimiento de hasta 12 litros por hora.
               </p>
             </article>
             <article>
-              <CalendarClock />
-              <h3>Coordinado</h3>
+              <Flame />
+              <h3>Agua caliente</h3>
               <p>
-                Organizamos las entregas de acuerdo con la dinámica de tu
-                operación.
+                Caldera de acero inoxidable de 2 litros, con temperaturas de
+                hasta 95 °C.
               </p>
             </article>
             <article>
-              <Handshake />
-              <h3>Cercano</h3>
+              <Lightbulb />
+              <h3>Uso simple</h3>
               <p>
-                Atención directa para resolver consultas y acompañar cada
-                reposición.
+                Dos canillas, indicadores LED y bandeja recolectora para un uso
+                práctico durante toda la jornada.
               </p>
             </article>
             <article>
-              <CircleCheckBig />
-              <h3>Confiable</h3>
+              <Gauge />
+              <h3>Versátil</h3>
               <p>
-                Agua baja en sodio y tratada con ozono, lista para todo el
-                equipo.
+                Diseño de columna con carga superior, compatible con bidones
+                de 10, 12 y 20 litros.
               </p>
             </article>
           </div>
@@ -121,29 +165,44 @@ export default function OfficePage() {
       <section className="office-banner">
         <div className="container">
           <img
-            src={asset('/media/bidon-invertido.png')}
-            alt="Bidón Aquapuel para dispenser"
+            src={asset('/media/aquadisp-40lb.webp')}
+            alt="Dispenser frío calor Aquadisp con bidón Aquapuel"
           />
           <div>
             <span className="eyebrow light">
-              <span /> Formatos de 12 y 20 litros
+              <span /> AQUADISP 40LB
             </span>
             <h2>
-              Listo para
-              <br />
-              tu dispenser.
+              Un dispenser preparado para el ritmo de tu empresa.
             </h2>
             <p>
-              Práctico para salas de reunión, espacios comunes y áreas de
-              atención.
+              Agua fría y caliente en un mismo equipo, con un funcionamiento
+              simple y una capacidad pensada para el consumo cotidiano de
+              oficinas y comercios.
             </p>
+            <ul className="office-tech-list">
+              <li>Modelo Aquadisp 40LB.</li>
+              <li>Color blanco.</li>
+              <li>Alimentación 220 V.</li>
+              <li>Dos canillas.</li>
+              <li>Caldera de acero inoxidable de 2 litros.</li>
+              <li>Indicadores LED.</li>
+              <li>Carga superior.</li>
+              <li>Medidas: 98 × 33 × 33 cm.</li>
+              <li>Apto para gas ecológico.</li>
+              <li>Organismo de certificación: IRAM.</li>
+            </ul>
           </div>
         </div>
       </section>
       <ClosingCta
-        title="Una propuesta para tu equipo."
-        text="Contanos cuántas personas comparten el espacio y preparemos una solución."
-        button="Pedir asesoramiento"
+        eyebrow="EQUIPÁ TU EMPRESA"
+        title="Agua fría y caliente para todo tu equipo."
+        text="Consultanos por el dispenser Aquadisp 40LB y los bidones Aquapuel para tu oficina, comercio o espacio de trabajo."
+        button="Consultar disponibilidad"
+        href={AVAILABILITY_WHATSAPP}
+        image="/media/office-aquadisp-cta.webp"
+        imageAlt="Dispenser Aquapuel para oficinas y empresas"
       />
       <SiteFooter />
     </main>

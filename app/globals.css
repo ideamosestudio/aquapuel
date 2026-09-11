@@ -1228,6 +1228,10 @@ select {
   font-weight: 900;
   text-transform: uppercase;
 }
+.social-links a svg {
+  width: 16px;
+  height: 16px;
+}
 .footer-bottom {
   margin-top: 60px;
   padding-top: 22px;
@@ -1998,6 +2002,20 @@ select {
   padding: 110px 0;
   text-align: center;
 }
+.closing-photo,
+.closing-photo-shade {
+  position: absolute;
+  inset: 0;
+}
+.closing-photo {
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+}
+.closing-photo-shade {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(1, 19, 58, 0.94), rgba(0, 64, 136, 0.76));
+}
 .closing-wave {
   content: '';
   position: absolute;
@@ -2006,6 +2024,7 @@ select {
   background-size: 105% auto;
   background-repeat: no-repeat;
   opacity: 0.11;
+  z-index: 1;
 }
 .closing-inner {
   position: relative;
@@ -2029,6 +2048,7 @@ select {
 }
 .bubble {
   position: absolute;
+  z-index: 2;
   border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 50%;
   box-shadow: inset 6px 6px 15px rgba(255, 255, 255, 0.22);
@@ -2259,6 +2279,46 @@ select {
   align-items: center;
   gap: 80px;
 }
+.office-page .page-hero h1 {
+  font-size: clamp(48px, 5.2vw, 74px);
+}
+.office-page .office-grid {
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 70px;
+}
+.office-spec-list,
+.office-tech-list {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.office-spec-list {
+  display: grid;
+  gap: 10px;
+}
+.office-spec-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--navy);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.office-spec-list svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex: none;
+  color: var(--blue);
+}
+.office-grid .office-use-copy {
+  margin-top: 24px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.office-detail-cta {
+  margin-top: 24px;
+}
 .office-photo {
   position: relative;
 }
@@ -2324,20 +2384,24 @@ select {
   background: linear-gradient(90deg, #021a4d, #004eac);
 }
 .office-banner > .container {
-  min-height: 560px;
+  min-height: 700px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  gap: 70px;
 }
 .office-banner img {
-  align-self: end;
+  align-self: center;
   justify-self: center;
-  max-height: 530px;
+  width: 100%;
+  max-width: 440px;
+  max-height: 650px;
+  object-fit: contain;
   filter: drop-shadow(0 30px 40px rgba(0, 12, 48, 0.35));
   animation: productFloat 6s ease-in-out infinite;
 }
 .office-banner h2 {
-  font-size: clamp(48px, 6vw, 76px);
+  font-size: clamp(42px, 4.7vw, 64px);
   line-height: 0.98;
   letter-spacing: -0.055em;
   margin: 20px 0;
@@ -2347,6 +2411,29 @@ select {
   color: #bfddf7;
   font-size: 17px;
   line-height: 1.65;
+}
+.office-tech-list {
+  max-width: 570px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px 24px;
+}
+.office-tech-list li {
+  position: relative;
+  padding-left: 16px;
+  color: #d5eafa;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.office-tech-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lime);
 }
 
 /* Contacto */
@@ -2556,6 +2643,10 @@ select {
     grid-template-columns: 1fr;
     gap: 55px;
   }
+  .office-page .office-grid {
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
   .story-art {
     max-width: 590px;
   }
@@ -2581,7 +2672,7 @@ select {
     left: 22px;
   }
   .office-banner > .container {
-    min-height: 500px;
+    min-height: 680px;
   }
   .contact-section {
     padding-top: 75px;
@@ -2603,6 +2694,12 @@ select {
   }
   .page-hero-copy > p {
     font-size: 16px;
+  }
+  .office-page .page-hero h1 {
+    font-size: 44px;
+  }
+  .office-page .page-hero-bg {
+    background-position: 68% center;
   }
   .story-seal {
     width: 105px;
@@ -2632,13 +2729,31 @@ select {
   }
   .office-banner > .container {
     grid-template-columns: 1fr;
-    min-height: 720px;
-    padding-top: 80px;
+    min-height: auto;
+    padding: 80px 0 60px;
     text-align: center;
   }
   .office-banner img {
     grid-row: 2;
-    max-height: 410px;
+    width: min(100%, 320px);
+    max-height: 520px;
+    margin-top: 35px;
+  }
+  .office-tech-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+  }
+  .office-photo > img {
+    aspect-ratio: 1 / 1;
+    object-position: 62% center;
+  }
+  .office-floating {
+    left: 12px;
+    bottom: 18px;
+  }
+  .office-page .closing-photo {
+    background-position: 60% center;
   }
   .contact-title {
     padding-top: 160px;

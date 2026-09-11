@@ -8,6 +8,7 @@ export function PageHero({
   accent,
   copy,
   image,
+  imageAlt,
   children,
 }: {
   eyebrow: string;
@@ -15,6 +16,7 @@ export function PageHero({
   accent: string;
   copy: string;
   image: string;
+  imageAlt?: string;
   children?: React.ReactNode;
 }) {
   return (
@@ -22,6 +24,8 @@ export function PageHero({
       <div
         className="page-hero-bg"
         style={{ backgroundImage: `url('${asset(image)}')` }}
+        role={imageAlt ? 'img' : undefined}
+        aria-label={imageAlt}
       />
       <div className="page-hero-shade" />
       <div className="container page-hero-inner">
@@ -49,15 +53,28 @@ export function ClosingCta({
   text,
   button = 'Contactanos',
   href = WHATSAPP_URL,
+  image,
+  imageAlt,
 }: {
   eyebrow?: string;
   title: string;
   text: string;
   button?: string;
   href?: string;
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
-    <section className="closing-cta">
+    <section className={`closing-cta${image ? ' has-photo' : ''}`}>
+      {image ? (
+        <div
+          className="closing-photo"
+          style={{ backgroundImage: `url('${asset(image)}')` }}
+          role="img"
+          aria-label={imageAlt}
+        />
+      ) : null}
+      {image ? <div className="closing-photo-shade" /> : null}
       <div
         className="closing-wave"
         style={{ backgroundImage: `url('${asset('/media/onda-marca.png')}')` }}
