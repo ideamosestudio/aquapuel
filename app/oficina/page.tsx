@@ -189,7 +189,6 @@ export default function OfficePage() {
               <li>Indicadores LED.</li>
               <li>Carga superior.</li>
               <li>Medidas: 98 × 33 × 33 cm.</li>
-              <li>Apto para gas ecológico.</li>
               <li>Organismo de certificación: IRAM.</li>
             </ul>
           </div>

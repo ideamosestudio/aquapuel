@@ -18,7 +18,7 @@ export default function AboutPage() {
         eyebrow="Quiénes somos"
         title="Cuidamos lo esencial."
         accent="Todos los días."
-        copy="Aquapuel nace con una idea simple: hacer que el agua de calidad esté cerca de las personas, de forma práctica y confiable."
+        copy="Aquapuel es una empresa joven que nace con una idea simple: hacer que el agua de calidad esté cerca de las personas, de forma práctica y confiable. Trabajamos con compromiso, vocación de crecimiento y una mirada puesta en el futuro."
         image="/media/planta-aquapuel.png"
       />
       <section className="story section-pad">
