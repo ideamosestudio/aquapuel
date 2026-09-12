@@ -20,6 +20,11 @@ import { SiteFooter, SiteHeader } from '@/components/site-shell';
 import { asset } from '@/lib/assets';
 import { ADDRESS, MAPS_EMBED_URL, MAPS_URL, WHATSAPP_URL } from '@/lib/contact';
 
+const CLIENT_LOGOS = Array.from(
+  { length: 7 },
+  (_, index) => `/media/clientes/${String(index + 1).padStart(3, '0')}.png`,
+);
+
 export default function Home() {
   return (
     <main>
@@ -69,16 +74,26 @@ export default function Home() {
                 Soluciones para empresas <ArrowRight size={15} />
               </a>
             </div>
-            <div className="hero-points" aria-label="Beneficios principales">
-              <span>
-                <ShieldCheck /> Baja en sodio
-              </span>
-              <span>
-                <Sparkles /> Tratada con ozono
-              </span>
-              <span>
-                <Truck /> Entrega programada
-              </span>
+            <div
+              className="client-logos"
+              aria-label="Clientes que eligen Aquapuel"
+            >
+              <div className="client-logos-track">
+                {[...CLIENT_LOGOS, ...CLIENT_LOGOS.slice(0, 4)].map(
+                  (logo, index) => (
+                    <span
+                      className="client-logo"
+                      key={`${logo}-${index}`}
+                      aria-hidden="true"
+                    >
+                      <span
+                        className="client-logo-image"
+                        style={{ backgroundImage: `url('${asset(logo)}')` }}
+                      />
+                    </span>
+                  ),
+                )}
+              </div>
             </div>
           </div>
           <div

@@ -21,13 +21,14 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 body {
   margin: 0;
   color: var(--ink);
   background: #fff;
   font-family: 'Avenir Next', 'Century Gothic', Arial, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 a {
   color: inherit;
@@ -318,24 +319,50 @@ select {
 .light-link {
   color: #fff;
 }
-.hero-points {
-  margin-top: 36px;
-  display: flex;
-  gap: 22px;
-  color: #bcdcf7;
-  font-size: 14px;
-  font-weight: 650;
+.client-logos {
+  width: min(100%, 650px);
+  margin-top: 30px;
+  overflow: hidden;
+  contain: layout paint;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 5%,
+    #000 95%,
+    transparent
+  );
 }
-.hero-points span {
+.client-logos-track {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  width: 275%;
+  animation: clientLogosMarquee 24s linear infinite;
 }
-.hero-points svg {
-  width: 17px;
-  height: 17px;
-  flex: none;
-  color: var(--lime);
+.client-logo {
+  flex: 0 0 calc(100% / 11);
+  height: 72px;
+  padding: 0 10px;
+  display: grid;
+  place-items: center;
+}
+.client-logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 4px 10px rgba(0, 18, 60, 0.22));
+}
+@keyframes clientLogosMarquee {
+  to {
+    transform: translateX(-63.636363%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-logos-track {
+    animation: none;
+  }
 }
 .hero-product {
   position: relative;
@@ -1431,8 +1458,11 @@ select {
     font-size: 16px;
   }
   .hero-actions,
-  .hero-points {
+  .client-logos {
     justify-content: center;
+  }
+  .client-logos {
+    margin-inline: auto;
   }
   .hero-product {
     height: 470px;
@@ -1538,9 +1568,14 @@ select {
     flex-direction: column;
     gap: 16px;
   }
-  .hero-points {
-    gap: 10px;
-    flex-wrap: wrap;
+  .client-logos {
+    width: calc(100% + 12px);
+    margin-top: 24px;
+    margin-left: -6px;
+  }
+  .client-logo {
+    height: 58px;
+    padding-inline: 5px;
   }
   .hero-product {
     height: 420px;
@@ -2014,7 +2049,11 @@ select {
 }
 .closing-photo-shade {
   z-index: 1;
-  background: linear-gradient(90deg, rgba(1, 19, 58, 0.94), rgba(0, 64, 136, 0.76));
+  background: linear-gradient(
+    90deg,
+    rgba(1, 19, 58, 0.94),
+    rgba(0, 64, 136, 0.76)
+  );
 }
 .closing-wave {
   content: '';
