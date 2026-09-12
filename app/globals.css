@@ -1357,7 +1357,7 @@ select {
 
 @media (min-width: 901px) {
   .hero-copy {
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
 }
 
@@ -1387,7 +1387,7 @@ select {
   }
   .hero-copy {
     padding-bottom: 0;
-    transform: translateY(-25px);
+    transform: translateY(-35px);
   }
 }
 
