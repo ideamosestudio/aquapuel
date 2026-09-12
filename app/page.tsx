@@ -70,8 +70,11 @@ export default function Home() {
               >
                 Hacé tu pedido <ArrowRight size={17} />
               </a>
-              <a className="text-link light-link" href={asset('/oficina')}>
-                Soluciones para empresas <ArrowRight size={15} />
+              <a
+                className="button button-outline-lime"
+                href={asset('/oficina')}
+              >
+                Soluciones para empresas <ArrowRight size={17} />
               </a>
             </div>
             <div

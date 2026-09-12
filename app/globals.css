@@ -303,6 +303,16 @@ select {
 .button-lime:hover {
   box-shadow: 0 18px 38px rgba(183, 224, 0, 0.3);
 }
+.button-outline-lime {
+  color: #fff;
+  border: 1px solid var(--lime);
+  background: transparent;
+}
+.button-outline-lime:hover {
+  color: var(--navy);
+  background: var(--lime);
+  box-shadow: 0 18px 38px rgba(183, 224, 0, 0.2);
+}
 .text-link {
   display: inline-flex;
   gap: 9px;
@@ -320,7 +330,7 @@ select {
   color: #fff;
 }
 .client-logos {
-  width: min(100%, 650px);
+  width: min(75%, 487.5px);
   margin-top: 30px;
   overflow: hidden;
   contain: layout paint;
