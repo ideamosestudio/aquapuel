@@ -1355,6 +1355,12 @@ select {
   }
 }
 
+@media (min-width: 901px) {
+  .hero-copy {
+    transform: translateY(40px);
+  }
+}
+
 @media (min-width: 1400px) {
   .container {
     width: min(1480px, calc(100% - 96px));
@@ -1381,7 +1387,7 @@ select {
   }
   .hero-copy {
     padding-bottom: 0;
-    transform: translateY(-65px);
+    transform: translateY(-25px);
   }
 }
 
