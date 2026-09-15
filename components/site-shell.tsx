@@ -147,7 +147,7 @@ export function SiteFooter() {
               rel="noreferrer"
               aria-label="Aquapuel en Instagram"
             >
-              <span aria-hidden="true">ig</span>
+              <img src={asset('/media/instagram.svg')} alt="" width={17} height={17} aria-hidden="true" />
             </a>
             <a
               href={FACEBOOK_URL}
@@ -155,7 +155,7 @@ export function SiteFooter() {
               rel="noreferrer"
               aria-label="Aquapuel en Facebook"
             >
-              <span aria-hidden="true">f</span>
+              <img src={asset('/media/facebook.svg')} alt="" width={17} height={17} aria-hidden="true" />
             </a>
             <a
               href={TIKTOK_URL}
@@ -178,9 +178,13 @@ export function SiteFooter() {
           rel="noopener noreferrer"
           aria-label="Sitio desarrollado por Estudio Ideamos (abre en una nueva pestaña)"
         >
-          <span>Sitio desarrollado por</span>
-          <img src={asset('/media/ideamos-light.webp')} alt="Estudio Ideamos" width={104} height={34} />
-          <ArrowUpRight size={14} aria-hidden="true" />
+          <span className="footer-credit-brand">
+            <span className="footer-credit-label">Esta web la ideamos.</span>
+            <img src={asset('/media/ideamos-light.webp')} alt="Estudio Ideamos" width={104} height={34} />
+          </span>
+          <span className="footer-credit-arrow">
+            <ArrowUpRight size={17} aria-hidden="true" />
+          </span>
         </a>
       </div>
     </footer>
