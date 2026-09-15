@@ -1,3 +1,4 @@
+import { pageMetadata } from '@/lib/seo';
 import {
   ArrowRight,
   BadgeCheck,
@@ -22,8 +23,10 @@ import { ADDRESS, MAPS_EMBED_URL, MAPS_URL, WHATSAPP_URL } from '@/lib/contact';
 
 const CLIENT_LOGOS = Array.from(
   { length: 7 },
-  (_, index) => `/media/clientes/${String(index + 1).padStart(3, '0')}.png`,
+  (_, index) => `/media/clientes/${String(index + 1).padStart(3, '0')}.webp`,
 );
+
+export const metadata = pageMetadata('home');
 
 export default function Home() {
   return (
@@ -34,13 +37,13 @@ export default function Home() {
           <div
             className="hero-scene hero-scene-one"
             style={{
-              backgroundImage: `url('${asset('/media/planta-aquapuel.png')}')`,
+              backgroundImage: `url('${asset('/media/planta-aquapuel.webp')}')`,
             }}
           />
           <div
             className="hero-scene hero-scene-two"
             style={{
-              backgroundImage: `url('${asset('/media/aquapuel-hogar.png')}')`,
+              backgroundImage: `url('${asset('/media/aquapuel-hogar.webp')}')`,
             }}
           />
           <div className="hero-wash" />
@@ -58,8 +61,9 @@ export default function Home() {
               <em>fluye con vos.</em>
             </h1>
             <p>
-              Agua envasada para tu hogar, con calidad cuidada, atención
-              cercana, precios competitivos y una entrega simple.
+              Agua de mesa en bidones de 12 y 20 litros para tu hogar.
+              Desde Cuartel V, Moreno, con atención cercana y entrega coordinada.
+              Consultá la cobertura en tu zona.
             </p>
             <div className="hero-actions">
               <a
@@ -79,6 +83,7 @@ export default function Home() {
             </div>
             <div
               className="client-logos"
+              role="region"
               aria-label="Clientes que eligen Aquapuel"
             >
               <div className="client-logos-track">
@@ -105,9 +110,9 @@ export default function Home() {
           >
             <div className="product-halo" />
             <img
-              src={asset('/media/bidon.png')}
+              src={asset('/media/bidon.webp')}
               alt="Bidón Aquapuel de 12 litros"
-            />
+            width={720} height={900} decoding="async" loading="eager" fetchPriority="high" />
             <div className="product-note note-one">
               <strong>12 L</strong>
               <span>
@@ -241,7 +246,7 @@ export default function Home() {
                 <b>20 L</b> Práctico para espacios de mayor consumo.
               </span>
             </div>
-            <img src={asset('/media/bidon.png')} alt="Bidón Aquapuel" />
+            <img src={asset('/media/bidon.webp')} alt="Bidón Aquapuel" width={720} height={900} decoding="async" loading="lazy" />
           </div>
         </div>
         <div className="container filling-band">
@@ -348,7 +353,7 @@ export default function Home() {
               <div
                 className="choice-image"
                 style={{
-                  backgroundImage: `url('${asset('/media/aquapuel-hogar.png')}')`,
+                  backgroundImage: `url('${asset('/media/aquapuel-hogar.webp')}')`,
                 }}
               />
               <div className="choice-overlay" />
@@ -369,7 +374,7 @@ export default function Home() {
               <div
                 className="choice-image"
                 style={{
-                  backgroundImage: `url('${asset('/media/dispenser-oficina.png')}')`,
+                  backgroundImage: `url('${asset('/media/dispenser-oficina.webp')}')`,
                 }}
               />
               <div className="choice-overlay" />
@@ -396,9 +401,9 @@ export default function Home() {
               <Droplets />
             </div>
             <img
-              src={asset('/media/bidon-invertido.png')}
+              src={asset('/media/bidon-invertido.webp')}
               alt="Bidón Aquapuel para dispenser"
-            />
+            width={720} height={900} decoding="async" loading="lazy" />
           </div>
           <div className="dispenser-copy">
             <span className="eyebrow light">
@@ -443,7 +448,7 @@ export default function Home() {
         <div
           className="delivery-visual"
           style={{
-            backgroundImage: `url('${asset('/media/reparto-aquapuel.png')}')`,
+            backgroundImage: `url('${asset('/media/reparto-aquapuel.webp')}')`,
           }}
         >
           <div className="delivery-shade" />

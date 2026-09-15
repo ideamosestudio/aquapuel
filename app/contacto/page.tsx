@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import {
   Building2,
   Home,
@@ -19,11 +19,7 @@ import {
   WHATSAPP_URL,
 } from '@/lib/contact';
 
-export const metadata: Metadata = {
-  title: 'Contacto',
-  description:
-    'Contactate con Aquapuel para recibir agua en tu hogar, oficina o empresa.',
-};
+export const metadata = pageMetadata('contacto');
 
 export default function ContactPage() {
   return (
@@ -33,7 +29,7 @@ export default function ContactPage() {
         <div
           className="contact-backdrop"
           style={{
-            backgroundImage: `linear-gradient(90deg, rgba(2,21,64,.97), rgba(0,73,154,.67)), url('${asset('/media/aquapuel-hogar.png')}')`,
+            backgroundImage: `linear-gradient(90deg, rgba(2,21,64,.97), rgba(0,73,154,.67)), url('${asset('/media/aquapuel-hogar.webp')}')`,
           }}
         />
         <div className="container contact-title reveal-up">

@@ -17,16 +17,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Descargar el sitio
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Preparar Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: 22
           cache: npm
 
       - name: Instalar dependencias
         run: npm ci
+
+      - name: Revisar dependencias vulnerables
+        run: npm audit --audit-level=high
 
       - name: Construir para aquapuel.com
         run: npm run build
@@ -46,7 +49,7 @@ jobs:
           YAML
 
       - name: Guardar la web compilada en GitHub
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: cpanel-deploy

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import {
   ArrowRight,
   CalendarCheck,
@@ -12,11 +12,7 @@ import { ClosingCta, PageHero } from '@/components/marketing-blocks';
 import { asset } from '@/lib/assets';
 import { WHATSAPP_URL } from '@/lib/contact';
 
-export const metadata: Metadata = {
-  title: 'Agua para el hogar',
-  description:
-    'Bidones Aquapuel de 12 y 20 litros con entrega coordinada para tu casa.',
-};
+export const metadata = pageMetadata('hogar');
 
 export default function HomeServicePage() {
   return (
@@ -27,7 +23,7 @@ export default function HomeServicePage() {
         title="Agua fresca."
         accent="Casa feliz."
         copy="Bidones de 12 y 20 litros, baja en sodio y con entrega coordinada. Una rutina simple para que en tu casa siempre haya agua."
-        image="/media/aquapuel-hogar.png"
+        image="/media/aquapuel-hogar.webp"
       >
         <a
           className="button button-lime"
@@ -43,9 +39,9 @@ export default function HomeServicePage() {
           <div className="product-stage">
             <div className="stage-ring" />
             <img
-              src={asset('/media/bidon.png')}
+              src={asset('/media/bidon.webp')}
               alt="Bidón Aquapuel de 12 litros"
-            />
+            width={720} height={900} decoding="async" loading="lazy" />
             <span className="mini-badge">
               <Heart size={17} /> Para compartir
             </span>
@@ -93,7 +89,7 @@ export default function HomeServicePage() {
         <div
           className="section-wave"
           style={{
-            backgroundImage: `url('${asset('/media/onda-marca.png')}')`,
+            backgroundImage: `url('${asset('/media/onda-marca.webp')}')`,
           }}
         />
         <div className="container">

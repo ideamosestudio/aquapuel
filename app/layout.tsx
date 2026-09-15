@@ -1,8 +1,15 @@
 import type { Metadata } from 'next';
 import { asset } from '@/lib/assets';
+import { BUSINESS_SCHEMA, SITE_URL } from '@/lib/seo';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  robots: {
+    index: !process.env.NEXT_PUBLIC_BASE_PATH,
+    follow: true,
+    googleBot: { index: !process.env.NEXT_PUBLIC_BASE_PATH, follow: true, 'max-image-preview': 'large' },
+  },
   icons: {
     icon: [
       { url: asset('/favicon-32.png'), type: 'image/png', sizes: '32x32' },
@@ -20,7 +27,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_SCHEMA).replace(/</g, '\\u003c') }} />
+      </body>
     </html>
   );
 }

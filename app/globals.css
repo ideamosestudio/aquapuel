@@ -921,7 +921,7 @@ select {
   position: absolute;
   right: 18px;
   top: 15px;
-  color: rgba(0, 74, 155, 0.1);
+  color: #718ca8;
   font-size: 46px;
   font-weight: 900;
 }
@@ -2835,58 +2835,27 @@ select {
 .footer-credit {
   display: inline-flex;
   align-items: center;
-  gap: 24px;
-  min-height: 68px;
-  padding: 12px 14px 12px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 18px;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
-  color: #b2c6dd;
-  text-decoration: none;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
-}
-.footer-credit-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-}
-.footer-credit-label {
-  font-size: 10px;
-  line-height: 1.2;
+  justify-content: center;
+  gap: 10px;
+  min-height: 36px;
+  color: #a9c0d9;
+  font-size: 11px;
   letter-spacing: 0.015em;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 .footer-credit img {
   display: block;
-  width: 104px;
+  width: 94px;
   height: auto;
-  max-height: 34px;
+  max-height: 30px;
   object-fit: contain;
 }
-.footer-credit-arrow {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 50%;
-  color: #fff;
-  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-}
-.footer-credit:hover,
-.footer-credit:focus-visible {
-  border-color: rgba(255, 102, 0, 0.65);
-  background-color: rgba(255, 102, 0, 0.055);
-}
-.footer-credit:hover .footer-credit-arrow,
-.footer-credit:focus-visible .footer-credit-arrow {
-  background-color: #ff6500;
-  border-color: #ff6500;
-  transform: rotate(45deg);
-}
+.footer-credit:hover { color: #fff; }
 .footer-credit:focus-visible {
   outline: 2px solid #ff6500;
-  outline-offset: 4px;
+  outline-offset: 5px;
+  border-radius: 3px;
 }
 .floating-order {
   transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, box-shadow 0.25s ease;
@@ -2905,4 +2874,13 @@ select {
   margin: 0;
   object-fit: contain;
   filter: brightness(0) invert(1);
+}
+
+
+/* Reserve image proportions and avoid unnecessary work before content is visible. */
+img { height: auto; }
+.page-hero-bg, .closing-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 600px) {
+  .office-page .page-hero-bg { object-position: 68% center; }
+  .office-page .closing-photo { object-position: 60% center; }
 }

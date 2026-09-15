@@ -47,7 +47,7 @@ export function SiteHeader() {
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="container nav-wrap">
         <a href={asset('/')} className="brand" aria-label="Aquapuel, inicio">
-          <img src={asset('/media/logo-blanco.png')} alt="Aquapuel" />
+          <img src={asset('/media/logo-blanco.webp')} alt="Aquapuel" width={600} height={200} decoding="async" loading="eager" />
         </a>
         <nav className="desktop-nav" aria-label="Navegación principal">
           <a href={asset('/')}>Inicio</a>
@@ -113,7 +113,7 @@ export function SiteFooter() {
       </a>
       <div className="container footer-grid">
         <div className="footer-brand">
-          <img src={asset('/media/logo-blanco.png')} alt="Aquapuel" />
+          <img src={asset('/media/logo-blanco.webp')} alt="Aquapuel" width={600} height={200} decoding="async" loading="lazy" />
           <p>Agua de mesa envasada para hogares, oficinas y empresas.</p>
         </div>
         <div>
@@ -137,9 +137,9 @@ export function SiteFooter() {
         </div>
         <div className="footer-stamp">
           <img
-            src={asset('/media/tratada-con-ozono.png')}
+            src={asset('/media/tratada-con-ozono.webp')}
             alt="Tratada con ozono"
-          />
+          width={220} height={212} decoding="async" loading="lazy" />
           <div className="social-links">
             <a
               href={INSTAGRAM_URL}
@@ -178,13 +178,9 @@ export function SiteFooter() {
           rel="noopener noreferrer"
           aria-label="Sitio desarrollado por Estudio Ideamos (abre en una nueva pestaña)"
         >
-          <span className="footer-credit-brand">
-            <span className="footer-credit-label">Esta web la ideamos.</span>
-            <img src={asset('/media/ideamos-light.webp')} alt="Estudio Ideamos" width={104} height={34} />
-          </span>
-          <span className="footer-credit-arrow">
-            <ArrowUpRight size={17} aria-hidden="true" />
-          </span>
+          <span>Diseño que fluye</span>
+          <img src={asset('/media/ideamos-light.webp')} alt="Estudio Ideamos" width={104} height={34} loading="lazy" decoding="async" />
+          <ArrowUpRight size={13} aria-hidden="true" />
         </a>
       </div>
     </footer>

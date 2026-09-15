@@ -13,6 +13,7 @@ export function ContactForm() {
     event: SyntheticEvent<HTMLFormElement, SubmitEvent>,
   ) {
     event.preventDefault();
+    if (status === 'sending') return;
     setStatus('sending');
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -22,6 +23,7 @@ export function ContactForm() {
         'https://formsubmit.co/ajax/aquapuel@gmail.com',
         {
           method: 'POST',
+          signal: AbortSignal.timeout(15000),
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -34,6 +36,8 @@ export function ContactForm() {
         },
       );
       if (!response.ok) throw new Error('No se pudo enviar');
+      const result = await response.json();
+      if (result.success !== true && result.success !== 'true') throw new Error('El proveedor no confirmó el envío');
       form.reset();
       setStatus('sent');
     } catch {
@@ -60,6 +64,7 @@ export function ContactForm() {
     <form className="contact-form" onSubmit={sendOrder}>
       <input
         className="form-honey"
+        aria-label="Dejar este campo vacío"
         type="text"
         name="_honey"
         tabIndex={-1}
@@ -70,6 +75,7 @@ export function ContactForm() {
         <input
           id="nombre"
           name="nombre"
+          maxLength={120}
           autoComplete="name"
           required
           placeholder="¿Cómo te llamás?"
@@ -80,6 +86,7 @@ export function ContactForm() {
         <input
           id="telefono"
           name="telefono"
+          maxLength={40}
           type="tel"
           autoComplete="tel"
           required
@@ -91,6 +98,7 @@ export function ContactForm() {
         <input
           id="email"
           name="email"
+          maxLength={254}
           type="email"
           autoComplete="email"
           required
@@ -113,6 +121,7 @@ export function ContactForm() {
         <input
           id="direccion"
           name="direccion"
+          maxLength={240}
           autoComplete="street-address"
           required
           placeholder="Calle, número, piso o departamento"
@@ -123,6 +132,7 @@ export function ContactForm() {
         <input
           id="localidad"
           name="localidad"
+          maxLength={120}
           autoComplete="address-level2"
           required
           placeholder="¿En qué zona estás?"
@@ -133,6 +143,7 @@ export function ContactForm() {
         <input
           id="referencia"
           name="referencia"
+          maxLength={240}
           placeholder="Dato útil para encontrar el domicilio"
         />
       </div>
@@ -185,6 +196,7 @@ export function ContactForm() {
         <textarea
           id="mensaje"
           name="mensaje"
+          maxLength={2000}
           rows={4}
           placeholder="Horario preferido u otro dato que nos ayude con la entrega."
         />

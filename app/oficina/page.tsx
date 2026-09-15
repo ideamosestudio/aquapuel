@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import {
   ArrowRight,
   CircleCheckBig,
@@ -25,11 +25,7 @@ const AVAILABILITY_WHATSAPP = officeWhatsapp(
   'Hola Aquapuel, quiero consultar disponibilidad y condiciones del dispenser frío/calor para mi empresa.',
 );
 
-export const metadata: Metadata = {
-  title: 'Agua para oficinas',
-  description:
-    'Una solución flexible de agua Aquapuel para oficinas, comercios y equipos.',
-};
+export const metadata = pageMetadata('oficina');
 
 export default function OfficePage() {
   return (
@@ -107,7 +103,7 @@ export default function OfficePage() {
             <img
               src={asset('/media/office-aquadisp-detail.webp')}
               alt="Persona sirviéndose agua fría en un dispenser Aquapuel"
-            />
+            width={1672} height={941} decoding="async" loading="lazy" />
             <div className="office-floating">
               <Users />
               <strong>Frío + calor</strong>
@@ -167,7 +163,7 @@ export default function OfficePage() {
           <img
             src={asset('/media/aquadisp-40lb.webp')}
             alt="Dispenser frío calor con bidón Aquapuel"
-          />
+          width={1024} height={1536} decoding="async" loading="lazy" />
           <div>
             <span className="eyebrow light">
               <span /> DISPENSER FRÍO/CALOR

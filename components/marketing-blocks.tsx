@@ -21,11 +21,14 @@ export function PageHero({
 }) {
   return (
     <section className="page-hero">
-      <div
+      <img
         className="page-hero-bg"
-        style={{ backgroundImage: `url('${asset(image)}')` }}
-        role={imageAlt ? 'img' : undefined}
-        aria-label={imageAlt}
+        src={asset(image)}
+        alt={imageAlt ?? ''}
+        width={1600}
+        height={900}
+        fetchPriority="high"
+        decoding="async"
       />
       <div className="page-hero-shade" />
       <div className="container page-hero-inner">
@@ -67,17 +70,20 @@ export function ClosingCta({
   return (
     <section className={`closing-cta${image ? ' has-photo' : ''}`}>
       {image ? (
-        <div
+        <img
           className="closing-photo"
-          style={{ backgroundImage: `url('${asset(image)}')` }}
-          role="img"
-          aria-label={imageAlt}
+          src={asset(image)}
+          alt={imageAlt ?? ''}
+          width={1600}
+          height={900}
+          loading="lazy"
+          decoding="async"
         />
       ) : null}
       {image ? <div className="closing-photo-shade" /> : null}
       <div
         className="closing-wave"
-        style={{ backgroundImage: `url('${asset('/media/onda-marca.png')}')` }}
+        style={{ backgroundImage: `url('${asset('/media/onda-marca.webp')}')` }}
       />
       <div className="bubble bubble-a" />
       <div className="bubble bubble-b" />

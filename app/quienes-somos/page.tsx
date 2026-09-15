@@ -1,14 +1,10 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { Droplets, HeartHandshake, Leaf, ShieldCheck } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '@/components/site-shell';
 import { ClosingCta, PageHero } from '@/components/marketing-blocks';
 import { asset } from '@/lib/assets';
 
-export const metadata: Metadata = {
-  title: 'Quiénes somos',
-  description:
-    'Conocé la propuesta de Aquapuel y cómo cuidamos el agua que llega a vos.',
-};
+export const metadata = pageMetadata('quienes-somos');
 
 export default function AboutPage() {
   return (
@@ -19,21 +15,21 @@ export default function AboutPage() {
         title="Cuidamos lo esencial."
         accent="Todos los días."
         copy="Aquapuel es una empresa joven que nace con una idea simple: hacer que el agua de calidad esté cerca de las personas, de forma práctica y confiable. Trabajamos con compromiso, vocación de crecimiento y una mirada puesta en el futuro."
-        image="/media/planta-aquapuel.png"
+        image="/media/planta-aquapuel.webp"
       />
       <section className="story section-pad">
         <div className="container split-grid">
           <div className="story-art">
             <img
               className="story-photo"
-              src={asset('/media/planta-aquapuel.png')}
+              src={asset('/media/planta-aquapuel.webp')}
               alt="Bidones Aquapuel preparados para su distribución"
-            />
+            width={1600} height={900} decoding="async" loading="lazy" />
             <img
               className="story-seal"
-              src={asset('/media/tratada-con-ozono.png')}
+              src={asset('/media/tratada-con-ozono.webp')}
               alt="Agua tratada con ozono"
-            />
+            width={220} height={212} decoding="async" loading="lazy" />
           </div>
           <div className="story-copy">
             <span className="eyebrow">
