@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - /bin/cp -R site/. /home5/aquapuel/public_html/
