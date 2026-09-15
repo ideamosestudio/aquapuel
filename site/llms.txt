@@ -1,0 +1,27 @@
+# AQUAPUEL
+
+> Sitio oficial de Aquapuel, empresa de agua de mesa envasada con ubicación en Cuartel V, Moreno, Buenos Aires, Argentina.
+
+## Información del negocio
+
+- Productos: bidones de agua de mesa de 12 y 20 litros.
+- Clientes: hogares, oficinas, empresas y comercios.
+- Dispensers frío/calor: consultar disponibilidad y condiciones.
+- Dirección: Ruta Provincial 24 5801, Cuartel V, Moreno, Buenos Aires, Argentina.
+- Teléfono: +54 11 7364-3736.
+- Email: aquapuel@gmail.com.
+- La cobertura, los precios, el stock y los horarios de entrega se confirman al realizar la consulta.
+
+## Páginas oficiales
+
+- [Inicio](https://aquapuel.com/): productos y propuesta de Aquapuel.
+- [Hogares](https://aquapuel.com/hogar): bidones para uso doméstico.
+- [Oficinas y empresas](https://aquapuel.com/oficina): agua y dispensers para equipos.
+- [Quiénes somos](https://aquapuel.com/quienes-somos): información de la empresa.
+- [Contacto](https://aquapuel.com/contacto): consultas y pedidos.
+
+## Referencias
+
+- [Sitemap](https://aquapuel.com/sitemap.xml)
+- [Instagram](https://www.instagram.com/aquapuel.arg)
+- [Facebook](https://www.facebook.com/p/Aquapuel-100094175857039/)
