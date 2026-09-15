@@ -19,6 +19,15 @@ for (const [index, html] of documents.entries()) {
     /name="twitter:card"[^>]+summary_large_image/,
     pages[index] + ': missing social card',
   );
+  assert.doesNotMatch(
+    html,
+    /formsubmit\.co|aquapuel@gmail\.com/,
+    pages[index] + ': old email service',
+  );
+  assert.ok(
+    html.includes('info@aquapuel.com'),
+    pages[index] + ': contact email missing',
+  );
   const schemas = [
     ...html.matchAll(
       /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,

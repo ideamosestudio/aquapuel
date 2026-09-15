@@ -7,7 +7,7 @@ export const MAPS_URL =
   'https://www.google.com/maps/search/?api=1&query=Ruta%20Provincial%2024%205801%2C%20Cuartel%20V%2C%20Moreno%2C%20Provincia%20de%20Buenos%20Aires';
 export const MAPS_EMBED_URL =
   'https://www.google.com/maps?q=Ruta%20Provincial%2024%205801%2C%20Cuartel%20V%2C%20Moreno%2C%20Provincia%20de%20Buenos%20Aires&output=embed';
-export const EMAIL = 'aquapuel@gmail.com';
+export const EMAIL = 'info@aquapuel.com';
 export const INSTAGRAM_URL = 'https://www.instagram.com/aquapuel.arg';
 export const FACEBOOK_URL =
   'https://www.facebook.com/p/Aquapuel-100094175857039/';

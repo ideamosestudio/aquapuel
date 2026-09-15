@@ -2,12 +2,24 @@
 
 import { useState, type SyntheticEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { WHATSAPP_URL } from '@/lib/contact';
+import { EMAIL, WHATSAPP_URL } from '@/lib/contact';
 
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle');
+
+  if (process.env.NEXT_PUBLIC_BASE_PATH) {
+    return (
+      <div className="form-success">
+        <h2>Hacé tu pedido en Aquapuel</h2>
+        <p>Ingresá al sitio oficial para coordinar tu entrega.</p>
+        <a className="button button-blue" href="https://aquapuel.com/contacto">
+          Ir al formulario de pedidos
+        </a>
+      </div>
+    );
+  }
 
   async function sendOrder(
     event: SyntheticEvent<HTMLFormElement, SubmitEvent>,
@@ -19,22 +31,15 @@ export function ContactForm() {
     const data = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const response = await fetch(
-        'https://formsubmit.co/ajax/aquapuel@gmail.com',
-        {
-          method: 'POST',
-          signal: AbortSignal.timeout(15000),
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            ...data,
-            _subject: `Nuevo pedido Aquapuel — ${typeof data.nombre === 'string' ? data.nombre : ''}`,
-            _template: 'table',
-          }),
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        signal: AbortSignal.timeout(15000),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
-      );
+        body: JSON.stringify(data),
+      });
       if (!response.ok) throw new Error('No se pudo enviar');
       const result = await response.json();
       if (
@@ -43,7 +48,7 @@ export function ContactForm() {
         !('success' in result) ||
         (result.success !== true && result.success !== 'true')
       )
-        throw new Error('El proveedor no confirmó el envío');
+        throw new Error('No se pudo confirmar el envío');
       form.reset();
       setStatus('sent');
     } catch {
@@ -55,7 +60,7 @@ export function ContactForm() {
     return (
       <output className="form-success">
         <CheckCircle2 size={48} />
-        <h2>Recibimos tu pedido.</h2>
+        <h2>Tu pedido fue enviado.</h2>
         <p>
           Te vamos a contactar para confirmar zona, disponibilidad y entrega.
         </p>
@@ -67,7 +72,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={sendOrder}>
+    <form
+      className="contact-form"
+      method="post"
+      action="/api/contact.php"
+      onSubmit={sendOrder}
+    >
       <input
         className="form-honey"
         aria-label="Dejar este campo vacío"
@@ -172,6 +182,7 @@ export function ContactForm() {
           type="number"
           inputMode="numeric"
           min="1"
+          max="999"
           required
           placeholder="Ej: 3"
         />
@@ -216,7 +227,7 @@ export function ContactForm() {
           {status === 'sending' ? 'Enviando pedido…' : 'Enviar pedido'}{' '}
           <ArrowRight size={17} />
         </button>
-        <small>El pedido llegará a aquapuel@gmail.com.</small>
+        <small>El pedido llegará a {EMAIL}.</small>
       </div>
       {status === 'error' && (
         <div className="field-wide form-error" role="alert">

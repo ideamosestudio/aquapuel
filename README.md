@@ -49,6 +49,6 @@ Dependabot propone actualizaciones semanales. `npm audit --audit-level=high` blo
 
 ## Datos y próximos pasos
 
-Contacto y redes: `lib/contact.ts`. Títulos, descripciones y datos estructurados: `lib/seo.ts`. El formulario usa FormSubmit; comprobar su activación y entrega real con el titular del correo.
+Contacto y redes: `lib/contact.ts`. Títulos, descripciones y datos estructurados: `lib/seo.ts`. El formulario envía a info@aquapuel.com mediante public/api/contact.php y el correo del propio Nuthost. No usa un servicio externo de formularios ni requiere claves SMTP en el repositorio. Ver reports/formulario-nuthost.md.
 
 [Informe y pendientes](reports/optimizacion-y-pendientes.md). Cobertura real de reparto y Perfil de Empresa quedan pendientes de confirmación. No añadir zonas, reseñas, certificados ni precios sin respaldo.

@@ -28,6 +28,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Revisar formulario del servidor
+        run: php -l public/api/contact.php && php tests/contact.php
+
       - name: Revisar código y formato
         run: npm run lint && npm run format:check
 

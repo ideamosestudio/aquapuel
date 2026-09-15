@@ -2901,3 +2901,28 @@ img {
     object-position: 60% center;
   }
 }
+
+/* Keep the small-screen first paint light: retain the layout and artwork without
+   continuously animating full-viewport backgrounds, blur and product shadows. */
+@media (max-width: 600px) {
+  .hero-scene,
+  .hero .reveal-up,
+  .hero .reveal-product,
+  .hero-product img,
+  .product-halo,
+  .product-note,
+  .water-orb,
+  .page-hero-bg,
+  .contact-hero {
+    animation: none;
+  }
+  .hero-scene-two {
+    display: none;
+  }
+  .hero-product img {
+    filter: none;
+  }
+  .water-orb {
+    backdrop-filter: none;
+  }
+}

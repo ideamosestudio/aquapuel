@@ -68,11 +68,11 @@ const policy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' https://formsubmit.co",
+  "connect-src 'self'",
   'frame-src https://www.google.com https://maps.google.com',
   "object-src 'none'",
   "base-uri 'self'",
-  "form-action 'self' https://formsubmit.co",
+  "form-action 'self'",
   "frame-ancestors 'none'",
   'upgrade-insecure-requests',
 ].join('; ');
