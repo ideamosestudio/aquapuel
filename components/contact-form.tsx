@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type SyntheticEvent } from 'react';
+import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { EMAIL, WHATSAPP_URL } from '@/lib/contact';
 
@@ -8,6 +8,19 @@ type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>('idle');
+  const successRef = useRef<HTMLOutputElement>(null);
+
+  useEffect(() => {
+    if (status !== 'sent') return;
+    const confirmation = successRef.current;
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
+        confirmation?.focus({ preventScroll: true });
+        confirmation?.scrollIntoView({ block: 'center', behavior: 'instant' });
+      });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [status]);
 
   if (process.env.NEXT_PUBLIC_BASE_PATH) {
     return (
@@ -58,7 +71,12 @@ export function ContactForm() {
 
   if (status === 'sent') {
     return (
-      <output className="form-success">
+      <output
+        ref={successRef}
+        className="form-success"
+        tabIndex={-1}
+        aria-label="Pedido enviado"
+      >
         <CheckCircle2 size={48} />
         <h2>Tu pedido fue enviado.</h2>
         <p>
