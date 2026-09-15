@@ -2827,3 +2827,41 @@ select {
     flex-direction: column;
   }
 }
+
+/* Studio credit stays clear of the floating contact button. */
+.footer-bottom {
+  align-items: center;
+}
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  color: #a9c0d9;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-credit img {
+  width: 104px;
+  height: auto;
+  max-height: 34px;
+  object-fit: contain;
+}
+.footer-credit:hover {
+  color: #fff;
+}
+.footer-credit:focus-visible {
+  outline: 2px solid #c4e800;
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+.floating-order {
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, box-shadow 0.25s ease;
+}
+.floating-order.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+}

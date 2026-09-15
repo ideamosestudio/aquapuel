@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Mail,
@@ -83,10 +83,25 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const creditsRef = useRef<HTMLAnchorElement>(null);
+  const [creditsVisible, setCreditsVisible] = useState(false);
+
+  useEffect(() => {
+    const credits = creditsRef.current;
+    if (!credits) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setCreditsVisible(entry.isIntersecting),
+      { rootMargin: '0px 0px 90px 0px', threshold: 0 },
+    );
+    observer.observe(credits);
+    return () => observer.disconnect();
+  }, []);
   return (
     <footer className="site-footer">
       <a
-        className="floating-order"
+        className={'floating-order' + (creditsVisible ? ' is-hidden' : '')}
+        aria-hidden={creditsVisible}
+        tabIndex={creditsVisible ? -1 : undefined}
         href={WHATSAPP_URL}
         target="_blank"
         rel="noreferrer"
@@ -155,7 +170,18 @@ export function SiteFooter() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} AQUAPUEL</span>
-        <span>Agua de mesa envasada · 12 y 20 L</span>
+        <a
+          ref={creditsRef}
+          className="footer-credit"
+          href="https://ideamos.com.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Sitio desarrollado por Estudio Ideamos (abre en una nueva pestaña)"
+        >
+          <span>Sitio desarrollado por</span>
+          <img src={asset('/media/ideamos-light.webp')} alt="Estudio Ideamos" width={104} height={34} />
+          <ArrowUpRight size={14} aria-hidden="true" />
+        </a>
       </div>
     </footer>
   );
