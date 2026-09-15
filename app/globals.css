@@ -1,6 +1,12 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source(none);
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@source './';
+@source '../components/site-shell.tsx';
+@source '../components/marketing-blocks.tsx';
+@source '../components/contact-form.tsx';
+
+
 
 :root {
   --navy: #031d56;
