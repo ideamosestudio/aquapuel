@@ -1283,20 +1283,18 @@ select {
 }
 
 .reveal-up {
-  animation: revealUp 0.9s 0.15s both;
+  animation: revealUp 0.6s both;
 }
 .reveal-product {
-  animation: revealProduct 1.2s 0.25s both;
+  animation: revealProduct 0.8s both;
 }
 @keyframes revealUp {
   from {
-    opacity: 0;
     transform: translateY(24px);
   }
 }
 @keyframes revealProduct {
   from {
-    opacity: 0;
     transform: translateY(50px) scale(0.97);
   }
 }
@@ -1734,7 +1732,7 @@ select {
   min-height: 54px;
   padding: 0 21px;
   color: #fff;
-  background: #21a83d;
+  background: #12852c;
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 999px;
   box-shadow: 0 16px 38px rgba(10, 96, 42, 0.3);

@@ -206,7 +206,7 @@ export function SiteFooter() {
           href="https://ideamos.com.ar"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Sitio desarrollado por Estudio Ideamos (abre en una nueva pestaña)"
+          aria-label="Diseño que fluye Estudio Ideamos: diseño y desarrollo web (abre en una nueva pestaña)"
         >
           <span>Diseño que fluye</span>
           <img
