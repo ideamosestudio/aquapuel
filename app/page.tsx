@@ -61,8 +61,8 @@ export default function Home() {
               <em>fluye con vos.</em>
             </h1>
             <p>
-              Agua de mesa en bidones de 12 y 20 litros para tu hogar.
-              Desde Cuartel V, Moreno, con atención cercana y entrega coordinada.
+              Agua de mesa en bidones de 12 y 20 litros para tu hogar. Desde
+              Cuartel V, Moreno, con atención cercana y entrega coordinada.
               Consultá la cobertura en tu zona.
             </p>
             <div className="hero-actions">
@@ -81,9 +81,8 @@ export default function Home() {
                 Soluciones para empresas <ArrowRight size={17} />
               </a>
             </div>
-            <div
+            <section
               className="client-logos"
-              role="region"
               aria-label="Clientes que eligen Aquapuel"
             >
               <div className="client-logos-track">
@@ -102,7 +101,7 @@ export default function Home() {
                   ),
                 )}
               </div>
-            </div>
+            </section>
           </div>
           <div
             className="hero-product reveal-product"
@@ -112,7 +111,12 @@ export default function Home() {
             <img
               src={asset('/media/bidon.webp')}
               alt="Bidón Aquapuel de 12 litros"
-            width={720} height={900} decoding="async" loading="eager" fetchPriority="high" />
+              width={720}
+              height={900}
+              decoding="async"
+              loading="eager"
+              fetchPriority="high"
+            />
             <div className="product-note note-one">
               <strong>12 L</strong>
               <span>
@@ -246,7 +250,14 @@ export default function Home() {
                 <b>20 L</b> Práctico para espacios de mayor consumo.
               </span>
             </div>
-            <img src={asset('/media/bidon.webp')} alt="Bidón Aquapuel" width={720} height={900} decoding="async" loading="lazy" />
+            <img
+              src={asset('/media/bidon.webp')}
+              alt="Bidón Aquapuel"
+              width={720}
+              height={900}
+              decoding="async"
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="container filling-band">
@@ -403,7 +414,11 @@ export default function Home() {
             <img
               src={asset('/media/bidon-invertido.webp')}
               alt="Bidón Aquapuel para dispenser"
-            width={720} height={900} decoding="async" loading="lazy" />
+              width={720}
+              height={900}
+              decoding="async"
+              loading="lazy"
+            />
           </div>
           <div className="dispenser-copy">
             <span className="eyebrow light">

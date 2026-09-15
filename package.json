@@ -1,5 +1,5 @@
 {
-  "name": "sites-project",
+  "name": "aquapuel",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -7,31 +7,18 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build && node scripts/secure-export.mjs",
+    "build": "vinext build && node scripts/secure-export.mjs && node scripts/verify-export.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
-    "format": "oxfmt"
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check ."
   },
   "dependencies": {
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-server-dom-webpack": "19.3.0",
     "vinext": "1.0.0-beta.10",
-    "@base-ui/react": "1.8.0",
-    "@shadcn/react": "0.3.1",
-    "class-variance-authority": "0.7.1",
-    "clsx": "2.1.1",
-    "cmdk": "1.1.1",
-    "date-fns": "4.4.0",
-    "embla-carousel-react": "8.6.0",
-    "input-otp": "1.5.0",
-    "lucide-react": "1.46.0",
-    "react-day-picker": "9.8.1",
-    "react-resizable-panels": "4.12.4",
-    "recharts": "3.10.1",
-    "shadcn": "4.21.0",
-    "tailwind-merge": "3.7.0",
-    "tw-animate-css": "1.4.0"
+    "lucide-react": "1.46.0"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.54.9",

@@ -60,10 +60,10 @@ export default function OfficePage() {
               Agua caliente al instante.
             </h2>
             <p>
-              El dispenser brinda agua realmente fría gracias a su sistema
-              de refrigeración por motocompresor, no por plaqueta. Además,
-              cuenta con una caldera de acero inoxidable para disponer de agua
-              caliente durante toda la jornada.
+              El dispenser brinda agua realmente fría gracias a su sistema de
+              refrigeración por motocompresor, no por plaqueta. Además, cuenta
+              con una caldera de acero inoxidable para disponer de agua caliente
+              durante toda la jornada.
             </p>
             <ul className="office-spec-list">
               <li>
@@ -76,8 +76,7 @@ export default function OfficePage() {
                 <CircleCheckBig /> Temperaturas de 5 °C a 95 °C.
               </li>
               <li>
-                <CircleCheckBig /> Compatible con bidones de 10, 12 y 20
-                litros.
+                <CircleCheckBig /> Compatible con bidones de 10, 12 y 20 litros.
               </li>
               <li>
                 <CircleCheckBig /> Dos canillas e indicadores LED.
@@ -87,8 +86,8 @@ export default function OfficePage() {
               </li>
             </ul>
             <p className="office-use-copy">
-              Una solución práctica para oficinas, comercios, salas de reunión
-              y espacios de atención al público.
+              Una solución práctica para oficinas, comercios, salas de reunión y
+              espacios de atención al público.
             </p>
             <a
               href={DETAIL_WHATSAPP}
@@ -103,7 +102,11 @@ export default function OfficePage() {
             <img
               src={asset('/media/office-aquadisp-detail.webp')}
               alt="Persona sirviéndose agua fría en un dispenser Aquapuel"
-            width={1672} height={941} decoding="async" loading="lazy" />
+              width={1672}
+              height={941}
+              decoding="async"
+              loading="lazy"
+            />
             <div className="office-floating">
               <Users />
               <strong>Frío + calor</strong>
@@ -118,9 +121,7 @@ export default function OfficePage() {
             <span className="eyebrow light">
               <span /> COMODIDAD TODOS LOS DÍAS
             </span>
-            <h2>
-              Todo lo que tu espacio necesita.
-            </h2>
+            <h2>Todo lo que tu espacio necesita.</h2>
           </div>
           <div className="benefit-grid">
             <article>
@@ -151,8 +152,8 @@ export default function OfficePage() {
               <Gauge />
               <h3>Versátil</h3>
               <p>
-                Diseño de columna con carga superior, compatible con bidones
-                de 10, 12 y 20 litros.
+                Diseño de columna con carga superior, compatible con bidones de
+                10, 12 y 20 litros.
               </p>
             </article>
           </div>
@@ -163,14 +164,16 @@ export default function OfficePage() {
           <img
             src={asset('/media/aquadisp-40lb.webp')}
             alt="Dispenser frío calor con bidón Aquapuel"
-          width={1024} height={1536} decoding="async" loading="lazy" />
+            width={1024}
+            height={1536}
+            decoding="async"
+            loading="lazy"
+          />
           <div>
             <span className="eyebrow light">
               <span /> DISPENSER FRÍO/CALOR
             </span>
-            <h2>
-              Un dispenser preparado para el ritmo de tu empresa.
-            </h2>
+            <h2>Un dispenser preparado para el ritmo de tu empresa.</h2>
             <p>
               Agua fría y caliente en un mismo equipo, con un funcionamiento
               simple y una capacidad pensada para el consumo cotidiano de

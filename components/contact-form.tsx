@@ -37,7 +37,13 @@ export function ContactForm() {
       );
       if (!response.ok) throw new Error('No se pudo enviar');
       const result = await response.json();
-      if (result.success !== true && result.success !== 'true') throw new Error('El proveedor no confirmó el envío');
+      if (
+        typeof result !== 'object' ||
+        result === null ||
+        !('success' in result) ||
+        (result.success !== true && result.success !== 'true')
+      )
+        throw new Error('El proveedor no confirmó el envío');
       form.reset();
       setStatus('sent');
     } catch {

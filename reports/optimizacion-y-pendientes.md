@@ -20,24 +20,24 @@ Medición inicial Lighthouse móvil: rendimiento 61, accesibilidad 90, buenas pr
 
 ## Pendientes priorizados
 
-| Prioridad | Trabajo | Qué falta / para qué sirve |
-|---|---|---|
-| Alta | Habilitar SSH | Nuthost acepta conexión por 9022, pero deniega shell al usuario aquapuel. Solicitar habilitación; clave pública ya autorizada. |
-| Alta | Confirmar actualización automática | Revisar cron, registro y copia real en public_html; evitar ejecuciones superpuestas y publicar únicamente cuando cambia la versión. |
-| Alta | Medir web pública optimizada | Confirmar compresión, caché, CSP, redirecciones HTTPS y www, error 404 y recursos; comparar Lighthouse móvil tras despliegue. |
-| Alta | Search Console y Bing Webmaster Tools | Verificar propiedad, enviar sitemap y revisar indexación, canónicas y errores. Requiere acceso del titular. |
-| Alta | Entrega real del formulario | Confirmar activación de FormSubmit y recepción de un pedido real, incluidos spam y errores. La simulación no demuestra entrega de correo. |
-| Alta | Privacidad y tratamiento de datos | Definir responsable, finalidades, proveedor externo, retención y política de privacidad adecuada antes de incorporar seguimiento adicional. |
-| Alta | Zonas reales y Perfil de Empresa | Pendiente expresamente por decisión de la usuaria. No crear páginas de localidades sin cobertura confirmada. |
-| Media | Datos reales de rendimiento | Seguir Core Web Vitals en Search Console/CrUX cuando exista muestra suficiente; revisar especialmente móviles lentos. |
-| Media | Servidor | Revisar certificados/renovación, versiones del servidor, copias de seguridad y prueba de restauración, permisos y protección del proveedor. El hosting compartido limita controles. |
-| Media | Residuos de publicaciones | La copia actual no borra imágenes ni paquetes antiguos. Inventariar y retirar sólo archivos propios obsoletos con respaldo. |
-| Media | Calidad de contenido | Incorporar información confirmada sobre envases, retornos, entrega, mantenimiento de dispensers y controles de calidad; publicar documentación auténtica si existe. |
-| Media | Medición comercial | Acordar métricas de clic a WhatsApp, pedidos y contactos; configurar analítica respetando privacidad. |
-| Media | Reputación local | Unificar nombre/dirección/teléfono, completar perfil oficial y conseguir reseñas auténticas; enlaces de clientes/proveedores relevantes. |
-| Media | Accesibilidad | Auditoría manual de teclado, lectores de pantalla, contraste, zoom y formularios; resolver advertencias heredadas del código. |
-| Baja | JavaScript y fuentes | Tras medir la versión optimizada, evaluar menor hidratación del contenido estático, subconjuntos de fuentes y animación inicial. |
-| Baja | Dependencias mayores | Evaluar migraciones con cambios incompatibles por separado. Vinext sigue siendo beta: revisar estabilidad y alternativas si surgen incidencias. |
+| Prioridad | Trabajo                               | Qué falta / para qué sirve                                                                                                                                                          |
+| --------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Alta      | Habilitar SSH                         | Nuthost acepta conexión por 9022, pero deniega shell al usuario aquapuel. Solicitar habilitación; clave pública ya autorizada.                                                      |
+| Alta      | Confirmar actualización automática    | Revisar cron, registro y copia real en public_html; evitar ejecuciones superpuestas y publicar únicamente cuando cambia la versión.                                                 |
+| Alta      | Medir web pública optimizada          | Confirmar compresión, caché, CSP, redirecciones HTTPS y www, error 404 y recursos; comparar Lighthouse móvil tras despliegue.                                                       |
+| Alta      | Search Console y Bing Webmaster Tools | Verificar propiedad, enviar sitemap y revisar indexación, canónicas y errores. Requiere acceso del titular.                                                                         |
+| Alta      | Entrega real del formulario           | Confirmar activación de FormSubmit y recepción de un pedido real, incluidos spam y errores. La simulación no demuestra entrega de correo.                                           |
+| Alta      | Privacidad y tratamiento de datos     | Definir responsable, finalidades, proveedor externo, retención y política de privacidad adecuada antes de incorporar seguimiento adicional.                                         |
+| Alta      | Zonas reales y Perfil de Empresa      | Pendiente expresamente por decisión de la usuaria. No crear páginas de localidades sin cobertura confirmada.                                                                        |
+| Media     | Datos reales de rendimiento           | Seguir Core Web Vitals en Search Console/CrUX cuando exista muestra suficiente; revisar especialmente móviles lentos.                                                               |
+| Media     | Servidor                              | Revisar certificados/renovación, versiones del servidor, copias de seguridad y prueba de restauración, permisos y protección del proveedor. El hosting compartido limita controles. |
+| Media     | Residuos de publicaciones             | La copia actual no borra imágenes ni paquetes antiguos. Inventariar y retirar sólo archivos propios obsoletos con respaldo.                                                         |
+| Media     | Calidad de contenido                  | Incorporar información confirmada sobre envases, retornos, entrega, mantenimiento de dispensers y controles de calidad; publicar documentación auténtica si existe.                 |
+| Media     | Medición comercial                    | Acordar métricas de clic a WhatsApp, pedidos y contactos; configurar analítica respetando privacidad.                                                                               |
+| Media     | Reputación local                      | Unificar nombre/dirección/teléfono, completar perfil oficial y conseguir reseñas auténticas; enlaces de clientes/proveedores relevantes.                                            |
+| Media     | Accesibilidad                         | Auditoría manual de teclado, lectores de pantalla, contraste, zoom y formularios; resolver advertencias heredadas del código.                                                       |
+| Baja      | JavaScript y fuentes                  | Tras medir la versión optimizada, evaluar menor hidratación del contenido estático, subconjuntos de fuentes y animación inicial.                                                    |
+| Baja      | Dependencias mayores                  | Evaluar migraciones con cambios incompatibles por separado. Vinext sigue siendo beta: revisar estabilidad y alternativas si surgen incidencias.                                     |
 
 ## Oportunidades de contenido y búsqueda
 

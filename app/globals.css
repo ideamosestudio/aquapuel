@@ -1,12 +1,8 @@
 @import 'tailwindcss' source(none);
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 @source './';
 @source '../components/site-shell.tsx';
 @source '../components/marketing-blocks.tsx';
 @source '../components/contact-form.tsx';
-
-
 
 :root {
   --navy: #031d56;
@@ -2857,14 +2853,20 @@ select {
   max-height: 30px;
   object-fit: contain;
 }
-.footer-credit:hover { color: #fff; }
+.footer-credit:hover {
+  color: #fff;
+}
 .footer-credit:focus-visible {
   outline: 2px solid #ff6500;
   outline-offset: 5px;
   border-radius: 3px;
 }
 .floating-order {
-  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .floating-order.is-hidden {
   opacity: 0;
@@ -2882,11 +2884,22 @@ select {
   filter: brightness(0) invert(1);
 }
 
-
 /* Reserve image proportions and avoid unnecessary work before content is visible. */
-img { height: auto; }
-.page-hero-bg, .closing-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+img {
+  height: auto;
+}
+.page-hero-bg,
+.closing-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 @media (max-width: 600px) {
-  .office-page .page-hero-bg { object-position: 68% center; }
-  .office-page .closing-photo { object-position: 60% center; }
+  .office-page .page-hero-bg {
+    object-position: 68% center;
+  }
+  .office-page .closing-photo {
+    object-position: 60% center;
+  }
 }

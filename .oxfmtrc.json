@@ -8,6 +8,10 @@
     "pnpm-lock.yaml",
     "yarn.lock",
     "bun.lock",
-    "bun.lockb"
+    "bun.lockb",
+    "work/**",
+    "dist/**",
+    ".wrangler/**",
+    "node_modules/**"
   ]
 }

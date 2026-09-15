@@ -1,0 +1,9 @@
+# Imagen social de Aquapuel
+
+Archivo publicado: `public/media/aquapuel-social.png` (1733 × 907 px, PNG, 2,22 MB). Se usa en Open Graph y Twitter Card; no se descarga como contenido de la página.
+
+Creada con la herramienta integrada de generación de imágenes, usando el logo y el bidón de Aquapuel como referencias. El original generado se conserva fuera del repositorio; sólo se incluye el recurso final usado.
+
+## Prompt de producción
+
+Use case: ads-marketing. Create a finished, exceptionally polished social sharing / Open Graph cover image for the Argentine bottled water company AQUAPUEL, in a wide 1.91:1 landscape composition (1200x630 target). Reference 1 is the official white AQUAPUEL logo: preserve its exact lettering and lime/cyan wave identity. Reference 2 is the actual 12-liter water bottle: faithfully preserve this recognizable product and label, do not invent packaging. Deep midnight navy #031d56 to luminous cobalt blue background, exquisite controlled studio rim light, subtle fluid water waves and a few realistic water droplets, airy premium clean design matching a sophisticated water company website. Large official white AQUAPUEL logo in upper-left area, big two-line elegant highly legible headline on the left: "Bienestar que" in bold white geometric sans, "fluye con vos." in graceful italic lime #b7e000. Under it a subtle small line: "Agua para tu hogar y tu empresa". Bottom left small restrained "aquapuel.com". Bottle hero on the right, large luminous realistic with beautiful specular detail, fully legible main label, only a little bottom crop allowed. Keep text and logo comfortably within 65px safe area; wide composition balanced and uncluttered, immediately identifiable at thumbnail size. No UI buttons, no pill badges, no WhatsApp logo, no extra logos, no invented certifications or prices, no watermark. This is the final artwork, not a mockup of a browser or device.

@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   robots: {
     index: !process.env.NEXT_PUBLIC_BASE_PATH,
     follow: true,
-    googleBot: { index: !process.env.NEXT_PUBLIC_BASE_PATH, follow: true, 'max-image-preview': 'large' },
+    googleBot: {
+      index: !process.env.NEXT_PUBLIC_BASE_PATH,
+      follow: true,
+      'max-image-preview': 'large',
+    },
   },
   icons: {
     icon: [
@@ -29,7 +33,12 @@ export default function RootLayout({
     <html lang="es">
       <body>
         {children}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BUSINESS_SCHEMA).replace(/</g, '\\u003c') }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(BUSINESS_SCHEMA).replace(/</g, '\\u003c'),
+          }}
+        />
       </body>
     </html>
   );

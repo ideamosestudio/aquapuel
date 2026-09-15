@@ -27,6 +27,9 @@ jobs:
           cache: npm
       - name: Instalar dependencias
         run: npm ci
+      - name: Revisar código y formato
+        run: npm run lint && npm run format:check
+
       - name: Revisar dependencias vulnerables
         run: npm audit --audit-level=high
 

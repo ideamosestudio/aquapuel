@@ -28,13 +28,16 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Revisar código y formato
+        run: npm run lint && npm run format:check
+
       - name: Revisar dependencias vulnerables
         run: npm audit --audit-level=high
 
       - name: Construir para aquapuel.com
         run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_BASE_PATH: ''
 
       - name: Preparar archivos para cPanel
         run: |

@@ -41,7 +41,11 @@ export default function HomeServicePage() {
             <img
               src={asset('/media/bidon.webp')}
               alt="Bidón Aquapuel de 12 litros"
-            width={720} height={900} decoding="async" loading="lazy" />
+              width={720}
+              height={900}
+              decoding="async"
+              loading="lazy"
+            />
             <span className="mini-badge">
               <Heart size={17} /> Para compartir
             </span>

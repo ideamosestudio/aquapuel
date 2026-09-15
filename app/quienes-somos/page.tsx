@@ -24,12 +24,20 @@ export default function AboutPage() {
               className="story-photo"
               src={asset('/media/planta-aquapuel.webp')}
               alt="Bidones Aquapuel preparados para su distribución"
-            width={1600} height={900} decoding="async" loading="lazy" />
+              width={1600}
+              height={900}
+              decoding="async"
+              loading="lazy"
+            />
             <img
               className="story-seal"
               src={asset('/media/tratada-con-ozono.webp')}
               alt="Agua tratada con ozono"
-            width={220} height={212} decoding="async" loading="lazy" />
+              width={220}
+              height={212}
+              decoding="async"
+              loading="lazy"
+            />
           </div>
           <div className="story-copy">
             <span className="eyebrow">

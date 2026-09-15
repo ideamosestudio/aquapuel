@@ -1,6 +1,6 @@
 # Exportación estática y mantenimiento
 
-Las páginas inicio, hogar, oficina y quienes-somos exportan HTML completo y cargan únicamente public/site-interactions.js, con nombre versionado por contenido. scripts/secure-export.mjs elimina su arranque de React y sus precargas. Contacto conserva React para el formulario.
+Las páginas inicio, hogar, oficina y quienes-somos exportan HTML completo y cargan únicamente scripts/site-interactions.js, con nombre versionado por contenido. scripts/secure-export.mjs elimina su arranque de React y sus precargas. Contacto conserva React para el formulario.
 
 Si se agrega una función React interactiva a una página informativa, retirarla primero de staticPages en scripts/secure-export.mjs. La compilación rechaza controles de formulario en esas páginas para evitar publicarlos sin comportamiento. El menú nativo details y los enlaces funcionan sin React.
 
