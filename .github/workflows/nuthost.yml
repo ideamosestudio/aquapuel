@@ -1,4 +1,4 @@
-name: Publicar en Nuthost
+name: Preparar web para cPanel
 
 on:
   push:
@@ -6,16 +6,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
-  group: nuthost
+  group: preparar-cpanel
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Descargar el sitio
         uses: actions/checkout@v6
@@ -34,17 +33,21 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ""
 
-      - name: Comprobar la portada
-        run: test -s dist/client/index.html
+      - name: Preparar archivos para cPanel
+        run: |
+          test -s dist/client/index.html
+          mkdir -p cpanel-output/site
+          cp -a dist/client/. cpanel-output/site/
+          cat > cpanel-output/.cpanel.yml <<'YAML'
+          ---
+          deployment:
+            tasks:
+              - /bin/cp -R site/. /home5/aquapuel/public_html/
+          YAML
 
-      - name: Publicar en Nuthost
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      - name: Guardar la web compilada en GitHub
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          security: strict
-          local-dir: ./dist/client/
-          server-dir: ./
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: cpanel-deploy
+          publish_dir: ./cpanel-output
