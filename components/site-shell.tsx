@@ -186,12 +186,13 @@ export function SiteFooter() {
               rel="noreferrer"
               aria-label="Aquapuel en Instagram"
             >
-              <img
-                src={asset('/media/instagram.svg')}
-                alt=""
-                width={17}
-                height={17}
+              <span
+                className="social-icon"
                 aria-hidden="true"
+                style={{
+                  maskImage: `url(${asset('/media/instagram.svg')})`,
+                  WebkitMaskImage: `url(${asset('/media/instagram.svg')})`,
+                }}
               />
             </a>
             <a
@@ -200,12 +201,13 @@ export function SiteFooter() {
               rel="noreferrer"
               aria-label="Aquapuel en Facebook"
             >
-              <img
-                src={asset('/media/facebook.svg')}
-                alt=""
-                width={17}
-                height={17}
+              <span
+                className="social-icon"
                 aria-hidden="true"
+                style={{
+                  maskImage: `url(${asset('/media/facebook.svg')})`,
+                  WebkitMaskImage: `url(${asset('/media/facebook.svg')})`,
+                }}
               />
             </a>
             <a

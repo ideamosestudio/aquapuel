@@ -2873,13 +2873,25 @@ select {
   transform: translateY(12px);
 }
 
-.social-links a img {
+.social-links .social-icon {
   display: block;
   width: 17px;
   height: 17px;
-  margin: 0;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
+  background-color: currentColor;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+.social-links a {
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.social-links a:is(:hover, :focus-visible) {
+  color: var(--lime);
+  border-color: var(--lime);
+  background-color: rgb(192 226 0 / 5%);
 }
 
 /* Reserve image proportions and avoid unnecessary work before content is visible. */
