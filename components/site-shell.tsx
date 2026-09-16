@@ -37,6 +37,19 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+    document
+      .querySelectorAll<HTMLAnchorElement>('.mobile-menu nav a')
+      .forEach((link) => {
+        if (
+          (new URL(link.href).pathname.replace(/\/$/, '') || '/') ===
+          currentPath
+        ) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
     const updateHeader = () => setScrolled(window.scrollY > 24);
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
@@ -76,7 +89,7 @@ export function SiteHeader() {
             <Menu className="menu-open-icon" size={23} />
             <X className="menu-close-icon" size={25} />
           </summary>
-          <nav>
+          <nav aria-label="Navegación mobile">
             <a href={asset('/')}>Inicio</a>
             <a href={asset('/quienes-somos')}>Quiénes somos</a>
             <a href={asset('/hogar')}>Para el hogar</a>

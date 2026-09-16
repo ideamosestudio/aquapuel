@@ -174,9 +174,6 @@ select {
   border-radius: 10px;
   font-weight: 650;
 }
-.mobile-menu nav a:hover {
-  background: var(--ice);
-}
 
 .hero {
   position: relative;
@@ -1473,6 +1470,31 @@ select {
     border-radius: 0;
     font-size: clamp(24px, 7vw, 34px);
     font-weight: 700;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease;
+  }
+  .mobile-menu[open] nav a[aria-current='page'] {
+    color: var(--lime);
+    border-bottom-color: rgba(183, 224, 0, 0.55);
+  }
+  .mobile-menu[open] nav a:is(:active, :focus-visible) {
+    color: var(--lime);
+    background-color: rgba(16, 184, 237, 0.12);
+    border-bottom-color: var(--lime);
+  }
+  .mobile-menu[open] nav a:focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 4px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .mobile-menu[open] nav a:hover {
+      color: var(--lime);
+      background-color: rgba(16, 184, 237, 0.12);
+      border-bottom-color: var(--lime);
+    }
   }
   .hero {
     min-height: 780px;
