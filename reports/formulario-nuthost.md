@@ -19,3 +19,9 @@ Una petición GET al endpoint debe responder 405 en JSON. Un POST vacío con ori
 ## Copia de GitHub Pages
 
 GitHub Pages no ejecuta PHP. Esa copia enlaza al formulario de aquapuel.com y excluye el endpoint del artefacto publicado.
+
+## Refuerzo antispam
+
+El formulario solicita una verificación temporal propia antes del envío. El token está vinculado a una sesión con cookie Secure, HttpOnly y SameSite Strict, vence a los 30 minutos y se elimina tras un envío aceptado. El servidor rechaza tokens ausentes, falsificados o utilizados antes de dos segundos. La emisión está limitada a 30 solicitudes por IP y 500 globales cada 15 minutos. Se mantienen el campo trampa y el límite de cinco envíos por IP y cien globales cada 15 minutos. No se incorporan servicios externos.
+
+Estos controles reducen automatización básica y repeticiones, pero no impiden todos los bots que imiten un navegador. Ante abuso persistente, evaluar un desafío adicional sin bloquear indiscriminadamente consultas reales.

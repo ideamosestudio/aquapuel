@@ -1646,13 +1646,20 @@ select {
     font-size: 42px;
   }
   .formats-panel {
-    min-height: 580px;
+    min-height: 0;
     padding: 34px 28px;
   }
   .formats-panel > img {
-    width: 235px;
-    right: -38px;
-    bottom: -165px;
+    position: relative;
+    width: min(100%, 235px);
+    height: auto;
+    right: auto;
+    bottom: auto;
+    margin: 26px auto 0;
+    transform: none;
+  }
+  .formats-panel:hover > img {
+    transform: none;
   }
   .filling-band {
     grid-template-columns: 1fr;

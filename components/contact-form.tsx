@@ -1,15 +1,14 @@
 'use client';
-
 import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { EMAIL, WHATSAPP_URL } from '@/lib/contact';
-
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
-
 export function ContactForm() {
+  const [errorMessage, setErrorMessage] = useState(
+    'No pudimos enviarlo en este momento.',
+  );
   const [status, setStatus] = useState<FormStatus>('idle');
   const successRef = useRef<HTMLOutputElement>(null);
-
   useEffect(() => {
     if (status !== 'sent') return;
     const confirmation = successRef.current;
@@ -21,7 +20,6 @@ export function ContactForm() {
     });
     return () => cancelAnimationFrame(frame);
   }, [status]);
-
   if (process.env.NEXT_PUBLIC_BASE_PATH) {
     return (
       <div className="form-success">
@@ -33,17 +31,45 @@ export function ContactForm() {
       </div>
     );
   }
-
   async function sendOrder(
     event: SyntheticEvent<HTMLFormElement, SubmitEvent>,
   ) {
     event.preventDefault();
     if (status === 'sending') return;
+    setErrorMessage('No pudimos enviarlo en este momento.');
     setStatus('sending');
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-
     try {
+      const challengeResponse = await fetch('/api/contact.php', {
+        headers: { 'X-Aquapuel-Form': '1' },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!challengeResponse.ok) {
+        if (challengeResponse.status === 429)
+          setErrorMessage(
+            'Recibimos varios intentos. Esperá 15 minutos y volvé a probar.',
+          );
+        throw new Error('No se pudo verificar');
+      }
+      const challenge = await challengeResponse.json();
+      if (
+        typeof challenge !== 'object' ||
+        challenge === null ||
+        !('token' in challenge) ||
+        !('wait' in challenge) ||
+        typeof challenge.token !== 'string' ||
+        !/^[a-f0-9]{64}$/.test(challenge.token)
+      )
+        throw new Error('Verificación inválida');
+      await new Promise((resolve) =>
+        setTimeout(
+          resolve,
+          Math.min(2, Math.max(0, Number(challenge.wait) || 0)) * 1000 + 150,
+        ),
+      );
+      data._token = challenge.token;
       const response = await fetch('/api/contact.php', {
         method: 'POST',
         signal: AbortSignal.timeout(15000),
@@ -53,7 +79,13 @@ export function ContactForm() {
         },
         body: JSON.stringify(data),
       });
-      if (!response.ok) throw new Error('No se pudo enviar');
+      if (!response.ok) {
+        if (response.status === 429)
+          setErrorMessage(
+            'Recibimos varios intentos. Esperá 15 minutos y volvé a probar.',
+          );
+        throw new Error('No se pudo enviar');
+      }
       const result = await response.json();
       if (
         typeof result !== 'object' ||
@@ -68,7 +100,6 @@ export function ContactForm() {
       setStatus('error');
     }
   }
-
   if (status === 'sent') {
     return (
       <output
@@ -88,7 +119,6 @@ export function ContactForm() {
       </output>
     );
   }
-
   return (
     <form
       className="contact-form"
@@ -249,7 +279,7 @@ export function ContactForm() {
       </div>
       {status === 'error' && (
         <div className="field-wide form-error" role="alert">
-          No pudimos enviarlo en este momento.{' '}
+          {errorMessage}{' '}
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
             Mandalo por WhatsApp
           </a>

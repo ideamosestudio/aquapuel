@@ -24,7 +24,7 @@ function valid_text($value, int $limit, bool $required = true, bool $multiline =
 }
 
 // A private, bounded, locked ledger; no names, emails or message bodies are stored.
-function reserve_request(string $directory, string $ip, int $now): int
+function reserve_request(string $directory, string $ip, int $now, int $perIp = 5, int $global = 100): int
 {
     if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
         return 503;
@@ -59,7 +59,7 @@ function reserve_request(string $directory, string $ip, int $now): int
             }
         }
         $key = hash_hmac('sha256', $ip, $state['salt']);
-        if (count($state['requests'][$key] ?? []) >= 5 || $total >= 100) {
+        if (count($state['requests'][$key] ?? []) >= $perIp || $total >= $global) {
             return 429;
         }
         $state['requests'][$key][] = $now;
@@ -75,7 +75,17 @@ function reserve_request(string $directory, string $ip, int $now): int
     }
 }
 
-function handle_request(array $server, string $body, string $storage, callable $deliver): array
+// A short-lived, single-use token belongs to the browser session, not the page HTML.
+function valid_challenge(array $challenge, $token, int $now): bool
+{
+    return is_string($token) && strlen($token) === 64
+        && isset($challenge['token'], $challenge['issued'])
+        && is_string($challenge['token']) && is_int($challenge['issued'])
+        && $now - $challenge['issued'] >= 2 && $now - $challenge['issued'] <= 1800
+        && hash_equals($challenge['token'], $token);
+}
+
+function handle_request(array $server, string $body, string $storage, callable $deliver, array $challenge = []): array
 {
     if (($server['REQUEST_METHOD'] ?? '') !== 'POST') {
         return response(405, false);
@@ -125,6 +135,9 @@ function handle_request(array $server, string $body, string $storage, callable $
     if (!valid_text($data['referencia'] ?? '', 240, false) || !valid_text($data['mensaje'] ?? '', 2000, false, true)) {
         return response(422, false);
     }
+    if (!valid_challenge($challenge, $data['_token'] ?? null, time())) {
+        return response(403, false);
+    }
     $rate = reserve_request($storage, $server['REMOTE_ADDR'] ?? 'unknown', time());
     if ($rate !== 200) {
         return response($rate, false);
@@ -150,11 +163,37 @@ if (!defined('AQUAPUEL_CONTACT_TEST')) {
     header('Content-Type: application/json; charset=UTF-8');
     header('Cache-Control: no-store');
     header('X-Content-Type-Options: nosniff');
-    header('Allow: POST');
+    header('Allow: GET, POST');
+    $storage = dirname(__DIR__, 2) . '/.aquapuel-form';
     try {
-        [$status, $payload] = handle_request($_SERVER, file_get_contents('php://input', false, null, 0, MAX_BODY_BYTES + 1), dirname(__DIR__, 2) . '/.aquapuel-form', static function ($to, $subject, $message, $headers) {
-            return function_exists('mail') && mail($to, $subject, $message, $headers);
-        });
+        $method = $_SERVER['REQUEST_METHOD'] ?? '';
+        $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+        $crossSite = ($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site';
+        if ($method === 'GET' && ($_SERVER['HTTP_X_AQUAPUEL_FORM'] ?? '') === '1' && !$crossSite && ($origin === '' || $origin === 'https://aquapuel.com')) {
+            $rate = reserve_request($storage . '/challenges', $_SERVER['REMOTE_ADDR'] ?? 'unknown', time(), 30, 500);
+            if ($rate !== 200) {
+                [$status, $payload] = response($rate, false);
+            } else {
+                session_name('__Host-aquapuel_form');
+                if (!session_start(['use_strict_mode' => 1, 'use_only_cookies' => 1, 'cookie_secure' => 1, 'cookie_httponly' => 1, 'cookie_samesite' => 'Strict', 'cookie_path' => '/'])) { throw new \RuntimeException('Session unavailable'); }
+                if (!isset($_SESSION['challenge']) || time() - $_SESSION['challenge']['issued'] > 1500) {
+                    $_SESSION['challenge'] = ['token' => bin2hex(random_bytes(32)), 'issued' => time()];
+                }
+                $status = 200;
+                $payload = ['token' => $_SESSION['challenge']['token'], 'wait' => max(0, 2 - (time() - $_SESSION['challenge']['issued']))];
+                session_write_close();
+            }
+        } elseif ($method === 'POST' && $origin === 'https://aquapuel.com' && !$crossSite) {
+            session_name('__Host-aquapuel_form');
+            if (!session_start(['use_strict_mode' => 1, 'use_only_cookies' => 1, 'cookie_secure' => 1, 'cookie_httponly' => 1, 'cookie_samesite' => 'Strict', 'cookie_path' => '/'])) { throw new \RuntimeException('Session unavailable'); }
+            [$status, $payload] = handle_request($_SERVER, file_get_contents('php://input', false, null, 0, MAX_BODY_BYTES + 1), $storage, static function ($to, $subject, $message, $headers) {
+                return function_exists('mail') && mail($to, $subject, $message, $headers);
+            }, $_SESSION['challenge'] ?? []);
+            if ($status === 200) { unset($_SESSION['challenge']); }
+            session_write_close();
+        } else {
+            [$status, $payload] = response($method === 'POST' || $method === 'GET' ? 403 : 405, false);
+        }
     } catch (\Throwable $error) {
         error_log('Aquapuel contact handler failed; check private storage and mail configuration.');
         [$status, $payload] = response(503, false);
