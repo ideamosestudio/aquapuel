@@ -159,16 +159,31 @@ export function SiteFooter() {
         </div>
         <div className="footer-contact">
           <span className="footer-label">Hablemos</span>
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-            <Phone size={17} aria-hidden="true" /> <span>{PHONE_DISPLAY}</span>
-          </a>
-          <a href={MAPS_URL} target="_blank" rel="noreferrer">
+          <div className="footer-channels">
+            <a
+              className="footer-phone"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Phone size={17} aria-hidden="true" />{' '}
+              <span>{PHONE_DISPLAY}</span>
+            </a>
+            <a className="footer-email" href={`mailto:${EMAIL}`}>
+              <Mail size={17} aria-hidden="true" /> <span>{EMAIL}</span>
+            </a>
+          </div>
+          <a
+            className="footer-address"
+            href={MAPS_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
             <MapPin size={18} aria-hidden="true" /> <span>{ADDRESS}</span>
           </a>
-          <a href={`mailto:${EMAIL}`}>
-            <Mail size={17} aria-hidden="true" /> <span>{EMAIL}</span>
+          <a className="footer-contact-link" href={asset('/contacto')}>
+            Ver contacto <ArrowUpRight size={14} aria-hidden="true" />
           </a>
-          <a href={asset('/contacto')}>Ver contacto</a>
         </div>
         <div className="footer-stamp">
           <img

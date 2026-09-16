@@ -2956,6 +2956,9 @@ img {
   }
 }
 
+.footer-channels {
+  display: contents;
+}
 .footer-nav-desktop {
   display: contents;
 }
@@ -3119,35 +3122,88 @@ img {
     color: #9ab6d3;
   }
   .footer-grid > div.footer-contact {
-    gap: 4px;
     align-items: center;
+    gap: 18px;
   }
   .footer-contact .footer-label {
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    color: #f1f6fc;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    text-transform: none;
+    line-height: 1.3;
   }
-  .footer-contact a {
-    min-height: 44px;
+  .footer-contact .footer-channels {
+    display: grid;
+    width: 100%;
+    padding: 0 18px;
+    border: 1px solid rgb(168 197 227 / 16%);
+    border-radius: 18px;
+    background: linear-gradient(
+      135deg,
+      rgb(40 84 137 / 24%),
+      rgb(12 40 81 / 16%)
+    );
+  }
+  .footer-contact .footer-channels a {
+    min-height: 60px;
     justify-content: center;
-    line-height: 1.6;
-    font-size: 13px;
-  }
-  .footer-contact a:has(span) {
     align-items: center;
-    gap: 9px;
+    gap: 10px;
+    padding: 14px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+  }
+  .footer-channels a + a {
+    border-top: 1px solid rgb(168 197 227 / 12%);
+  }
+  .footer-channels .footer-phone {
+    font-size: 18px;
+    font-weight: 500;
+    color: #edf5ff;
+    letter-spacing: -0.025em;
   }
   .footer-contact a:has(span) svg {
     margin-top: 0;
   }
-  .footer-contact a[href*='maps'] {
-    flex-direction: column;
-    gap: 8px;
-    padding-block: 10px;
-  }
-  .footer-contact a[href*='maps'] span {
+  .footer-contact a.footer-address {
     max-width: 310px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 4px;
+    color: #abc3dc;
+    font-size: 12px;
+    line-height: 1.75;
   }
-  .footer-contact a svg {
-    flex: 0 0 18px;
+  .footer-address svg {
+    color: #9dbce0;
+  }
+  .footer-contact .footer-contact-link {
+    justify-content: center;
+    gap: 6px;
+    min-height: 44px;
+    margin-top: -8px;
+    font-size: 12px;
+    color: #d9e9f8;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: rgb(168 197 227 / 35%);
+  }
+  .footer-contact .footer-contact-link svg {
+    width: 14px;
+    height: 14px;
+    flex-basis: 14px;
+  }
+  .footer-contact a:is(:hover, :focus-visible) {
+    color: var(--lime);
+  }
+  .footer-contact a:focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 4px;
+    border-radius: 6px;
   }
   .footer-grid > div.footer-stamp {
     display: flex !important;
