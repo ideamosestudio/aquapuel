@@ -1,6 +1,16 @@
 // Progressive enhancement for explicitly static marketing pages. Navigation and
 // content remain available without JavaScript; contacto retains React hydration.
 (() => {
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.mobile-menu nav a').forEach((link) => {
+    if (
+      (new URL(link.href).pathname.replace(/\/$/, '') || '/') === currentPath
+    ) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
   const header = document.querySelector('.site-header');
   const credit = document.querySelector('.footer-credit');
   const order = document.querySelector('.floating-order');
