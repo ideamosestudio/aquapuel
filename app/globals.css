@@ -1234,6 +1234,23 @@ select {
 .footer-grid a:hover {
   color: var(--lime);
 }
+.footer-contact a svg {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.6;
+}
+.footer-contact a:has(span) {
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+}
+.footer-contact a:has(span) svg {
+  margin-top: 3px;
+}
+.footer-contact a span {
+  min-width: 0;
+}
 .footer-label {
   margin-bottom: 4px;
   color: #6f94bb;
@@ -3114,8 +3131,23 @@ img {
     line-height: 1.6;
     font-size: 13px;
   }
+  .footer-contact a:has(span) {
+    align-items: center;
+    gap: 9px;
+  }
+  .footer-contact a:has(span) svg {
+    margin-top: 0;
+  }
+  .footer-contact a[href*='maps'] {
+    flex-direction: column;
+    gap: 8px;
+    padding-block: 10px;
+  }
+  .footer-contact a[href*='maps'] span {
+    max-width: 310px;
+  }
   .footer-contact a svg {
-    flex: 0 0 16px;
+    flex: 0 0 18px;
   }
   .footer-grid > div.footer-stamp {
     display: flex !important;

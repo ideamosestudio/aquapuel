@@ -160,13 +160,13 @@ export function SiteFooter() {
         <div className="footer-contact">
           <span className="footer-label">Hablemos</span>
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-            <Phone size={16} /> {PHONE_DISPLAY}
+            <Phone size={17} aria-hidden="true" /> <span>{PHONE_DISPLAY}</span>
           </a>
           <a href={MAPS_URL} target="_blank" rel="noreferrer">
-            <MapPin size={16} /> {ADDRESS}
+            <MapPin size={18} aria-hidden="true" /> <span>{ADDRESS}</span>
           </a>
           <a href={`mailto:${EMAIL}`}>
-            <Mail size={16} /> {EMAIL}
+            <Mail size={17} aria-hidden="true" /> <span>{EMAIL}</span>
           </a>
           <a href={asset('/contacto')}>Ver contacto</a>
         </div>
