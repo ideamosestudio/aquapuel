@@ -142,9 +142,18 @@ export function SiteFooter() {
               Explorá <span className="footer-toggle-icon" aria-hidden="true" />
             </summary>
             <nav aria-label="Explorá Aquapuel">
-              <a href={asset('/quienes-somos')}>Quiénes somos</a>
-              <a href={asset('/hogar')}>Para el hogar</a>
-              <a href={asset('/oficina')}>Para la oficina</a>
+              <a href={asset('/quienes-somos')}>
+                Quiénes somos
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a href={asset('/hogar')}>
+                Para el hogar
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+              <a href={asset('/oficina')}>
+                Para la oficina
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
             </nav>
           </details>
         </div>

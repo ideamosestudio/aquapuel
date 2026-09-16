@@ -3016,15 +3016,75 @@ img {
   }
   .footer-explore nav {
     display: grid;
-    padding: 0 16px 14px;
+    margin: 0 0 18px;
+    padding: 4px 14px;
+    overflow: hidden;
+    border: 1px solid rgb(168 197 227 / 16%);
+    border-radius: 18px;
+    background: linear-gradient(
+      135deg,
+      rgb(40 84 137 / 28%),
+      rgb(12 40 81 / 22%)
+    );
+    box-shadow:
+      inset 0 1px 0 rgb(224 240 255 / 5%),
+      0 12px 28px rgb(0 9 30 / 12%);
   }
   .footer-explore nav a {
-    min-height: 44px;
+    position: relative;
+    min-height: 66px;
+    padding: 16px 40px;
     justify-content: center;
-    font-size: 13px;
+    color: #e5effa;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.5;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .footer-explore nav a + a {
+    border-top: 1px solid rgb(168 197 227 / 12%);
+  }
+  .footer-explore nav a svg {
+    position: absolute;
+    right: 8px;
+    width: 15px;
+    height: 15px;
+    color: #8faecf;
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+  .footer-explore nav a:is(:hover, :focus-visible, :active) {
+    color: var(--lime);
+    background: rgb(112 158 205 / 6%);
+  }
+  .footer-explore nav a:focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: -3px;
+    border-radius: 8px;
+  }
+  .footer-explore nav a:is(:hover, :focus-visible) svg {
+    color: var(--lime);
+    transform: translate(2px, -2px);
+  }
+  .footer-explore[open] summary {
+    color: #fff;
   }
   .footer-explore[open] nav {
-    animation: footerReveal 0.22s ease-out;
+    animation: footerReveal 0.28s ease-out;
+  }
+  .footer-explore[open] nav a {
+    animation: footerReveal 0.3s ease-out both;
+  }
+  .footer-explore[open] nav a:nth-child(2) {
+    animation-delay: 0.04s;
+  }
+  .footer-explore[open] nav a:nth-child(3) {
+    animation-delay: 0.08s;
   }
   .footer-label {
     color: #9ab6d3;
