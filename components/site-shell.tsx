@@ -131,10 +131,22 @@ export function SiteFooter() {
           <p>Agua de mesa envasada para hogares, oficinas y empresas.</p>
         </div>
         <div className="footer-nav">
-          <span className="footer-label">Explorá</span>
-          <a href={asset('/quienes-somos')}>Quiénes somos</a>
-          <a href={asset('/hogar')}>Para el hogar</a>
-          <a href={asset('/oficina')}>Para la oficina</a>
+          <div className="footer-nav-desktop">
+            <span className="footer-label">Explorá</span>
+            <a href={asset('/quienes-somos')}>Quiénes somos</a>
+            <a href={asset('/hogar')}>Para el hogar</a>
+            <a href={asset('/oficina')}>Para la oficina</a>
+          </div>
+          <details className="footer-explore">
+            <summary>
+              Explorá <span className="footer-toggle-icon" aria-hidden="true" />
+            </summary>
+            <nav aria-label="Explorá Aquapuel">
+              <a href={asset('/quienes-somos')}>Quiénes somos</a>
+              <a href={asset('/hogar')}>Para el hogar</a>
+              <a href={asset('/oficina')}>Para la oficina</a>
+            </nav>
+          </details>
         </div>
         <div className="footer-contact">
           <span className="footer-label">Hablemos</span>
