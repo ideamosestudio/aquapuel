@@ -1445,55 +1445,158 @@ select {
   .mobile-menu[open] .menu-close-icon {
     display: block;
   }
-  .mobile-menu[open] nav {
+  body:has(.mobile-menu[open]) {
+    overflow: hidden;
+  }
+  .site-header:has(.mobile-menu[open]) {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  body:has(.mobile-menu[open]) .floating-order {
+    visibility: hidden;
+  }
+  .mobile-menu[open] .mobile-menu-panel {
     position: fixed;
     z-index: 81;
     inset: 0;
-    width: 100vw;
     height: 100dvh;
-    padding: 100px 28px 38px;
-    align-content: center;
-    gap: 2px;
+    padding: max(28px, env(safe-area-inset-top)) 26px
+      max(24px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     color: #fff;
-    border-radius: 0;
     background:
       radial-gradient(
-        circle at 90% 8%,
-        rgba(0, 161, 225, 0.24),
-        transparent 30%
+        ellipse at 100% 0%,
+        rgba(16, 184, 237, 0.18),
+        transparent 55%
       ),
-      linear-gradient(145deg, #020812, #032763);
+      linear-gradient(155deg, #05162f, #031d56 75%);
+    animation: mobileMenuReveal 240ms ease-out both;
+  }
+  .mobile-menu-brand {
+    padding: 3px 56px 30px 4px;
+  }
+  .mobile-menu-brand img {
+    width: 142px;
+    height: auto;
+  }
+  .mobile-menu-brand > span {
+    display: block;
+    margin-top: 11px;
+    color: #a6bed6;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+  .mobile-menu[open] nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin-block: auto;
+    display: grid;
+    background: transparent;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
   }
   .mobile-menu[open] nav a {
-    padding: 18px 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    display: grid;
+    grid-template-columns: 25px 1fr 20px;
+    align-items: center;
+    gap: 10px;
+    min-height: 67px;
+    padding: 17px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
     border-radius: 0;
-    font-size: clamp(24px, 7vw, 34px);
-    font-weight: 700;
+    font-size: clamp(20px, 5.8vw, 30px);
+    letter-spacing: -0.035em;
+    font-weight: 650;
     -webkit-tap-highlight-color: transparent;
     transition:
       color 180ms ease,
       background-color 180ms ease,
       border-color 180ms ease;
   }
-  .mobile-menu[open] nav a[aria-current='page'] {
+  .mobile-link-number {
+    color: #8aa6c4;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .mobile-menu[open] nav a > svg {
+    opacity: 0.5;
+    transition:
+      transform 180ms ease,
+      opacity 180ms ease;
+  }
+  .mobile-menu[open] nav a[aria-current='page'],
+  .mobile-menu[open] nav a:is(:active, :focus-visible) {
     color: var(--lime);
     border-bottom-color: rgba(183, 224, 0, 0.55);
   }
-  .mobile-menu[open] nav a:is(:active, :focus-visible) {
-    color: var(--lime);
-    background-color: rgba(16, 184, 237, 0.12);
-    border-bottom-color: var(--lime);
+  .mobile-menu[open] nav a[aria-current='page'] > svg {
+    opacity: 1;
   }
-  .mobile-menu[open] nav a:focus-visible {
+  .mobile-menu[open] nav a:is(:active, :focus-visible) {
+    background-color: rgba(16, 184, 237, 0.1);
+  }
+  .mobile-menu[open] a:focus-visible {
     outline: 2px solid var(--lime);
-    outline-offset: 4px;
+    outline-offset: 3px;
+  }
+  .mobile-menu-bottom {
+    padding-top: 34px;
+    display: grid;
+    gap: 15px;
+  }
+  .mobile-menu-bottom > span {
+    color: #b5c8dc;
+    font-size: 12px;
+    text-align: center;
+  }
+  .mobile-menu-order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 54px;
+    border-radius: 14px;
+    background: var(--lime);
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .mobile-menu-order > svg:last-child {
+    margin-left: auto;
+  }
+  .mobile-menu-order > svg:first-child {
+    margin-right: auto;
+  }
+  .mobile-menu-order {
+    padding: 15px 20px;
   }
   @media (hover: hover) and (pointer: fine) {
     .mobile-menu[open] nav a:hover {
       color: var(--lime);
-      background-color: rgba(16, 184, 237, 0.12);
+      background-color: rgba(16, 184, 237, 0.1);
       border-bottom-color: var(--lime);
+    }
+    .mobile-menu[open] nav a:hover > svg {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+  }
+  @keyframes mobileMenuReveal {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   .hero {

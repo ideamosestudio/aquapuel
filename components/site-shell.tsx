@@ -85,17 +85,50 @@ export function SiteHeader() {
           Hacé tu pedido <ArrowUpRight size={16} />
         </a>
         <details className="mobile-menu">
-          <summary aria-label="Abrir menú">
+          <summary aria-label="Abrir o cerrar menú">
             <Menu className="menu-open-icon" size={23} />
             <X className="menu-close-icon" size={25} />
           </summary>
-          <nav aria-label="Navegación mobile">
-            <a href={asset('/')}>Inicio</a>
-            <a href={asset('/quienes-somos')}>Quiénes somos</a>
-            <a href={asset('/hogar')}>Para el hogar</a>
-            <a href={asset('/oficina')}>Para la oficina</a>
-            <a href={asset('/contacto')}>Contactanos</a>
-          </nav>
+          <div className="mobile-menu-panel">
+            <div className="mobile-menu-brand">
+              <img
+                src={asset('/media/logo-blanco.webp')}
+                alt="Aquapuel"
+                width={600}
+                height={200}
+              />
+              <span>Agua pura, todos los días.</span>
+            </div>
+            <nav aria-label="Navegación mobile">
+              {[
+                ['/', 'Inicio'],
+                ['/quienes-somos', 'Quiénes somos'],
+                ['/hogar', 'Para el hogar'],
+                ['/oficina', 'Para la oficina'],
+                ['/contacto', 'Contactanos'],
+              ].map(([href, label], index) => (
+                <a key={href} href={asset(href)}>
+                  <span className="mobile-link-number" aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  <span>{label}</span>
+                  <ArrowUpRight size={20} aria-hidden="true" />
+                </a>
+              ))}
+            </nav>
+            <div className="mobile-menu-bottom">
+              <span>Bienestar que fluye con vos.</span>
+              <a
+                className="mobile-menu-order"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MessageCircle size={20} aria-hidden="true" /> Hacé tu pedido{' '}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </details>
       </div>
     </header>
