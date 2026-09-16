@@ -22,7 +22,7 @@ UAPI = '/usr/local/cpanel/bin/uapi'
 
 def run(args):
     return subprocess.check_output(args, cwd=str(REPO), stderr=subprocess.STDOUT,
-                                   timeout=90).decode().strip()
+                                   timeout=90, preexec_fn=lambda: os.umask(0o022)).decode().strip()
 
 
 def digest(path):

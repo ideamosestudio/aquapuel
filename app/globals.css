@@ -2930,6 +2930,7 @@ img {
 @media (max-width: 600px) {
   .site-footer {
     padding: 40px 0 24px;
+    text-align: center;
   }
   .footer-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -2937,9 +2938,10 @@ img {
   }
   .footer-brand img {
     width: 164px;
+    margin-inline: auto;
   }
   .footer-brand p {
-    margin: 10px 0 0;
+    margin: 10px auto 0;
     max-width: 300px;
     font-size: 13px;
   }
@@ -2952,18 +2954,24 @@ img {
     grid-column: 1 / -1;
     margin-bottom: 8px;
   }
+  .footer-nav a:last-child {
+    grid-column: 1 / -1;
+  }
   .footer-nav a {
     min-height: 44px;
+    justify-content: center;
     font-size: 13px;
   }
   .footer-grid > div.footer-contact {
     gap: 4px;
+    align-items: center;
   }
   .footer-contact .footer-label {
     margin-bottom: 8px;
   }
   .footer-contact a {
     min-height: 44px;
+    justify-content: center;
     line-height: 1.6;
     font-size: 13px;
   }
@@ -2972,9 +2980,9 @@ img {
   }
   .footer-grid > div.footer-stamp {
     display: flex !important;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 20px;
     border-top: 1px solid rgb(255 255 255 / 10%);
   }
@@ -2997,6 +3005,7 @@ img {
   .footer-credit {
     gap: 8px;
     min-height: 44px;
+    justify-content: center;
   }
   .footer-credit img {
     width: 82px;
