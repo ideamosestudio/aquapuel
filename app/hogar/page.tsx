@@ -92,6 +92,7 @@ export default function HomeServicePage() {
       <section className="steps section-pad">
         <div
           className="section-wave"
+          aria-hidden="true"
           style={{
             backgroundImage: `url('${asset('/media/onda-marca.webp')}')`,
           }}

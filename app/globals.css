@@ -2164,7 +2164,8 @@ select {
 .product-stage > img {
   position: relative;
   z-index: 2;
-  max-height: 610px;
+  width: min(100%, 488px);
+  height: auto;
   filter: drop-shadow(0 34px 34px rgba(0, 62, 133, 0.18));
   animation: productFloat 6s ease-in-out infinite;
 }
@@ -2253,11 +2254,12 @@ select {
 }
 .section-wave {
   position: absolute;
-  inset: auto -5% -70px;
+  inset: auto 0 0;
+  aspect-ratio: 3 / 1;
   background-position: center bottom;
-  background-size: 100% auto;
+  background-size: contain;
   background-repeat: no-repeat;
-  height: 280px;
+  pointer-events: none;
   opacity: 0.09;
 }
 .steps .section-heading h2 {
@@ -2790,7 +2792,7 @@ select {
     min-height: 440px;
   }
   .product-stage > img {
-    max-height: 450px;
+    width: min(100%, 360px);
   }
   .stage-ring {
     width: 350px;
