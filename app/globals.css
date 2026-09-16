@@ -1589,6 +1589,19 @@ select {
       transform: translate(2px, -2px);
     }
   }
+  @media (max-height: 650px) {
+    .mobile-menu-brand {
+      padding-bottom: 18px;
+    }
+    .mobile-menu[open] nav a {
+      min-height: 56px;
+      padding-block: 12px;
+    }
+    .mobile-menu-bottom {
+      padding-top: 20px;
+      gap: 10px;
+    }
+  }
   @keyframes mobileMenuReveal {
     from {
       opacity: 0;
