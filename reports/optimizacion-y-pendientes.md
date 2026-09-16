@@ -22,8 +22,6 @@ Medición inicial Lighthouse móvil: rendimiento 61, accesibilidad 90, buenas pr
 
 | Prioridad | Trabajo                               | Qué falta / para qué sirve                                                                                                                                                          |
 | --------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Alta      | Habilitar SSH                         | Nuthost acepta conexión por 9022, pero deniega shell al usuario aquapuel. Solicitar habilitación; clave pública ya autorizada.                                                      |
-| Alta      | Confirmar actualización automática    | Publicación automática observada en varias versiones. Resta revisar registro y evitar ejecuciones superpuestas al habilitar SSH.                                                    |
 | Alta      | Medir web pública optimizada          | Confirmar compresión, caché, CSP, redirecciones HTTPS y www, error 404 y recursos; comparar Lighthouse móvil tras despliegue.                                                       |
 | Alta      | Search Console y Bing Webmaster Tools | Verificar propiedad, enviar sitemap y revisar indexación, canónicas y errores. Requiere acceso del titular.                                                                         |
 | Alta      | Entrega real del formulario           | Recepción real confirmada en info@aquapuel.com el 15/09. SPF y DKIM presentes; DMARC en monitoreo. Revisar alineación con cabeceras reales.                                         |
@@ -31,7 +29,6 @@ Medición inicial Lighthouse móvil: rendimiento 61, accesibilidad 90, buenas pr
 | Alta      | Zonas reales y Perfil de Empresa      | Pendiente expresamente por decisión de la usuaria. No crear páginas de localidades sin cobertura confirmada.                                                                        |
 | Media     | Datos reales de rendimiento           | Seguir Core Web Vitals en Search Console/CrUX cuando exista muestra suficiente; revisar especialmente móviles lentos.                                                               |
 | Media     | Servidor                              | Revisar certificados/renovación, versiones del servidor, copias de seguridad y prueba de restauración, permisos y protección del proveedor. El hosting compartido limita controles. |
-| Media     | Residuos de publicaciones             | La copia actual no borra imágenes ni paquetes antiguos. Inventariar y retirar sólo archivos propios obsoletos con respaldo.                                                         |
 | Media     | Calidad de contenido                  | Incorporar información confirmada sobre envases, retornos, entrega, mantenimiento de dispensers y controles de calidad; publicar documentación auténtica si existe.                 |
 | Media     | Medición comercial                    | Acordar métricas de clic a WhatsApp, pedidos y contactos; configurar analítica respetando privacidad.                                                                               |
 | Media     | Reputación local                      | Unificar nombre/dirección/teléfono, completar perfil oficial y conseguir reseñas auténticas; enlaces de clientes/proveedores relevantes.                                            |
@@ -79,4 +76,4 @@ La imagen social profesional está publicada con metadatos en las cinco páginas
 
 La usuaria confirmó la recepción real del formulario en info@aquapuel.com. El envío usa el correo del propio Nuthost; no utiliza un proveedor externo de formularios. Detalles en formulario-nuthost.md. Se corrige además el desplazamiento al sustituir el formulario por la confirmación: el mensaje recibe foco y queda visible.
 
-SSH sigue pendiente de habilitación de shell. No se pudo inspeccionar el registro del cron ni retirar residuos del servidor. GitHub no permitió comprobar/activar las alertas administrativas de vulnerabilidades con este acceso (404); Dependabot y la auditoría de paquetes del flujo sí están configurados.
+SSH habilitado y verificado. Cron revisado y mejorado; residuos antiguos respaldados y retirados. Ver servidor-nuthost.md. GitHub no permitió comprobar/activar las alertas administrativas de vulnerabilidades con este acceso (404); Dependabot y la auditoría de paquetes del flujo sí están configurados.

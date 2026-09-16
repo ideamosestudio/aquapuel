@@ -130,13 +130,13 @@ export function SiteFooter() {
           />
           <p>Agua de mesa envasada para hogares, oficinas y empresas.</p>
         </div>
-        <div>
+        <div className="footer-nav">
           <span className="footer-label">Explorá</span>
           <a href={asset('/quienes-somos')}>Quiénes somos</a>
           <a href={asset('/hogar')}>Para el hogar</a>
           <a href={asset('/oficina')}>Para la oficina</a>
         </div>
-        <div>
+        <div className="footer-contact">
           <span className="footer-label">Hablemos</span>
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
             <Phone size={16} /> {PHONE_DISPLAY}
