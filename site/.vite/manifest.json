@@ -27,15 +27,15 @@
     "file": "_next/static/chunks/rolldown-runtime-hePW80VL.js",
     "name": "rolldown-runtime"
   },
-  "_vinext-Dtn5dDh7.js": {
-    "file": "_next/static/chunks/vinext-Dtn5dDh7.js",
+  "_vinext-DwuUGNoS.js": {
+    "file": "_next/static/chunks/vinext-DwuUGNoS.js",
     "name": "vinext",
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "_framework-BlZLPK95.js"
     ],
     "dynamicImports": [
-      "_vinext-Dtn5dDh7.js"
+      "_vinext-DwuUGNoS.js"
     ]
   },
   "components/contact-form.tsx": {
@@ -61,28 +61,28 @@
     ]
   },
   "node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-CbKcs8U8.js",
+    "file": "_next/static/chunks/layout-segment-context-BNNeTFp-.js",
     "name": "layout-segment-context",
     "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "_framework-BlZLPK95.js",
-      "_vinext-Dtn5dDh7.js"
+      "_vinext-DwuUGNoS.js"
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-D_DE6Gxb.js",
+    "file": "_next/static/chunks/index-CczbVwfs.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
     "imports": [
       "_rolldown-runtime-hePW80VL.js",
       "_framework-BlZLPK95.js",
-      "_vinext-Dtn5dDh7.js"
+      "_vinext-DwuUGNoS.js"
     ],
     "dynamicImports": [
-      "_vinext-Dtn5dDh7.js",
+      "_vinext-DwuUGNoS.js",
       "node_modules/vinext/dist/shims/layout-segment-context.js",
       "_Icon-Pc6-suab.js",
       "components/site-shell.tsx",
