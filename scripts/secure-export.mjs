@@ -19,6 +19,12 @@ const enhancementName =
   createHash('sha256').update(enhancement).digest('hex').slice(0, 12) +
   '.js';
 writeFileSync(join(directory, enhancementName), enhancement);
+const wheel = readFileSync('scripts/smooth-wheel.js', 'utf8');
+const wheelName =
+  'smooth-wheel-' +
+  createHash('sha256').update(wheel).digest('hex').slice(0, 12) +
+  '.js';
+writeFileSync(join(directory, wheelName), wheel);
 const hashes = new Set();
 for (const name of readdirSync(directory).filter((name) =>
   name.endsWith('.html'),
@@ -53,6 +59,11 @@ for (const name of readdirSync(directory).filter((name) =>
     );
     writeFileSync(join(directory, name), html);
   }
+  html = html.replace(
+    '</body>',
+    '<script defer src="' + basePath + '/' + wheelName + '"></script></body>',
+  );
+  writeFileSync(join(directory, name), html);
   for (const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)) {
     if (match[1])
       hashes.add(

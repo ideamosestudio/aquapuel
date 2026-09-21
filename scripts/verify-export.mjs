@@ -8,6 +8,11 @@ const documents = pages.map((page) =>
   readFileSync(join(directory, page + '.html'), 'utf8'),
 );
 for (const [index, html] of documents.entries()) {
+  assert.match(
+    html,
+    /smooth-wheel-[a-f0-9]+\.js/,
+    pages[index] + ': missing wheel enhancement',
+  );
   assert.match(html, /rel="canonical"/, pages[index] + ': missing canonical');
   assert.match(
     html,
