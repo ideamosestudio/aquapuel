@@ -489,7 +489,7 @@ export default function Home() {
                   <ShieldCheck /> Bidones retornables
                 </span>
                 <span>
-                  <Clock /> Lun. a vie. 8:00–16:00
+                  <Clock /> Lun. a vie. 8:00–16:00 · Sáb. 8:00–14:00
                 </span>
               </div>
               <a

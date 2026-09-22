@@ -167,7 +167,10 @@ export default function HomeServicePage() {
             </details>
             <details>
               <summary>¿En qué horario realizan repartos?</summary>
-              <p>De lunes a viernes, de 8:00 a 16:00 hs.</p>
+              <p>
+                De lunes a viernes, de 8:00 a 16:00 hs, y los sábados, de 8:00 a
+                14:00 hs.
+              </p>
             </details>
           </div>
         </div>
