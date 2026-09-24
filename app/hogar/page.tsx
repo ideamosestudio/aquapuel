@@ -39,7 +39,7 @@ export default function HomeServicePage() {
           <div className="product-stage">
             <div className="stage-ring" />
             <img
-              src={asset('/media/bidon.webp')}
+              src={asset('/media/bidon-final.webp')}
               alt="Bidón Aquapuel de 12 litros"
               width={720}
               height={900}

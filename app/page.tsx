@@ -109,7 +109,7 @@ export default function Home() {
           >
             <div className="product-halo" />
             <img
-              src={asset('/media/bidon.webp')}
+              src={asset('/media/bidon-final.webp')}
               alt="Bidón Aquapuel de 12 litros"
               width={720}
               height={900}
@@ -251,7 +251,7 @@ export default function Home() {
               </span>
             </div>
             <img
-              src={asset('/media/bidon.webp')}
+              src={asset('/media/bidon-final.webp')}
               alt="Bidón Aquapuel"
               width={720}
               height={900}
