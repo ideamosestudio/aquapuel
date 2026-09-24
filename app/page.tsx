@@ -412,7 +412,7 @@ export default function Home() {
               <Droplets />
             </div>
             <img
-              src={asset('/media/bidon-invertido.webp')}
+              src={asset('/media/bidon-invertido-final.webp')}
               alt="Bidón Aquapuel para dispenser"
               width={720}
               height={900}
