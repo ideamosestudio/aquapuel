@@ -1,3 +1,4 @@
+import { responsiveImages } from './responsive-images.mjs';
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
@@ -25,12 +26,13 @@ const wheelName =
   createHash('sha256').update(wheel).digest('hex').slice(0, 12) +
   '.js';
 writeFileSync(join(directory, wheelName), wheel);
-const hashes = new Set();
+const pagePolicies = [];
 for (const name of readdirSync(directory).filter((name) =>
   name.endsWith('.html'),
 )) {
   let html = readFileSync(join(directory, name), 'utf8');
   if (staticPages.has(name)) {
+    html = await responsiveImages(html, directory, basePath);
     if (/<(?:form|button|input|select|textarea)\b/i.test(html)) {
       throw new Error(
         name +
@@ -64,6 +66,7 @@ for (const name of readdirSync(directory).filter((name) =>
     '<script defer src="' + basePath + '/' + wheelName + '"></script></body>',
   );
   writeFileSync(join(directory, name), html);
+  const hashes = new Set();
   for (const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)) {
     if (match[1])
       hashes.add(
@@ -72,29 +75,42 @@ for (const name of readdirSync(directory).filter((name) =>
           "'",
       );
   }
+  pagePolicies.push({ name, hashes });
 }
-const policy = [
-  "default-src 'self'",
-  "script-src 'self' " + [...hashes].join(' '),
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "font-src 'self' data:",
-  "connect-src 'self'",
-  'frame-src https://www.google.com https://maps.google.com',
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'",
-  'upgrade-insecure-requests',
-].join('; ');
+const policyFor = (hashes = new Set()) =>
+  [
+    "default-src 'self'",
+    "script-src 'self' " + [...hashes].join(' '),
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob:",
+    "font-src 'self' data:",
+    "connect-src 'self'",
+    'frame-src https://www.google.com https://maps.google.com',
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    'upgrade-insecure-requests',
+  ].join('; ');
 const file = join(directory, '.htaccess');
 writeFileSync(
   file,
   readFileSync(file, 'utf8') +
-    '\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.html$\">\n  Header always set Content-Security-Policy "' +
-    policy +
-    '"\n  </FilesMatch>\n</IfModule>\n',
+    '\n<IfModule mod_headers.c>\n  Header always set Content-Security-Policy "' +
+    policyFor() +
+    '"\n' +
+    pagePolicies
+      .map(
+        ({ name, hashes }) =>
+          '  <Files "' +
+          name +
+          '">\n    Header always set Content-Security-Policy "' +
+          policyFor(hashes) +
+          '"\n  </Files>\n',
+      )
+      .join('') +
+    '</IfModule>\n',
 );
 console.log(
-  'Static CSP generated with ' + hashes.size + ' inline script hashes.',
+  'Page-specific CSP generated for ' + pagePolicies.length + ' documents.',
 );

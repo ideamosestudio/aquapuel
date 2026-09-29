@@ -14,29 +14,33 @@
     "format:check": "oxfmt --check ."
   },
   "dependencies": {
+    "lucide-react": "1.48.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-server-dom-webpack": "19.3.0",
-    "vinext": "1.0.0-beta.10",
-    "lucide-react": "1.46.0"
+    "vinext": "1.0.0"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.54.9",
-    "@cloudflare/workers-types": "5.20260915.1",
+    "@cloudflare/vite-plugin": "1.62.1",
+    "@cloudflare/workers-types": "5.20260929.1",
     "@openai/sites-vite-plugin": "0.2.0",
     "@tailwindcss/postcss": "4.3.3",
-    "@types/node": "22.19.19",
+    "@types/node": "22.20.4",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.1",
-    "@vitejs/plugin-rsc": "0.5.34",
-    "oxfmt": "0.68.0",
-    "oxlint": "1.83.0",
-    "oxlint-tsgolint": "7.0.2001",
+    "@vitejs/plugin-rsc": "0.5.35",
+    "oxfmt": "0.71.0",
+    "oxlint": "1.86.0",
+    "oxlint-tsgolint": "7.0.2003",
+    "sharp": "0.35.5",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
-    "vite": "8.3.0",
-    "wrangler": "4.131.2"
+    "vite": "8.3.1",
+    "wrangler": "4.143.1"
   },
-  "type": "module"
+  "type": "module",
+  "overrides": {
+    "fflate": "0.7.5"
+  }
 }

@@ -40,6 +40,14 @@ try {
     for ($i = 0; $i < 3; $i++) { expect($run($data)[0] === 200, 'Allow five attempts'); }
     expect($run($data)[0] === 429 && count($calls) === 4, 'Rate limit prevents delivery');
     expect(\Aquapuel\Contact\reserve_request($directory, '192.0.2.10', time() + 901) === 200, 'Rate limit expires');
+    expect(!\Aquapuel\Contact\valid_text("\xC3\x28", 120), 'Reject malformed UTF-8');
+    file_put_contents($directory . '/rate-limit.json', '{"salt":"test","requests":{"damaged":true}}');
+    expect(\Aquapuel\Contact\reserve_request($directory, '192.0.2.11', time()) === 503, 'Corrupt ledger fails closed');
+    file_put_contents($directory . '/rate-limit.json', str_repeat('x', 65537));
+    expect(\Aquapuel\Contact\reserve_request($directory, '192.0.2.11', time()) === 503, 'Bound corrupt ledger reads');
+    file_put_contents($directory . '/rate-limit.json', '');
+    $exception = \Aquapuel\Contact\handle_request($server, json_encode($data), $directory, static function () { throw new RuntimeException('private details'); }, $challenge);
+    expect($exception === [503, ['success' => false]], 'Mail exception returns generic failure');
     echo "Contact tests passed: validation, anti-abuse and local mail contract. No emails sent.\n";
 } finally {
     if (is_file($directory . '/rate-limit.json')) { unlink($directory . '/rate-limit.json'); }

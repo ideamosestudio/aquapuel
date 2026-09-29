@@ -22,6 +22,8 @@ import {
   WHATSAPP_URL,
 } from '@/lib/contact';
 
+const COPYRIGHT_YEAR = new Date().getFullYear();
+
 function TikTokIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -283,7 +285,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="container footer-bottom">
-        <span>© {new Date().getFullYear()} AQUAPUEL</span>
+        <span>© {COPYRIGHT_YEAR} AQUAPUEL</span>
         <a
           ref={creditsRef}
           className="footer-credit"

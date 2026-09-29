@@ -41,7 +41,7 @@ Las páginas informativas publican HTML con un script pequeño. Contacto conserv
 
 Se usan imágenes optimizadas y dimensiones explícitas, caché para recursos versionados, HTTPS y una política CSP calculada en cada compilación. Las imágenes `<img>` son intencionales: este hosting sirve una exportación estática sin optimizador de imágenes de Next.js.
 
-Dependabot propone actualizaciones semanales. `npm audit --audit-level=high` bloquea publicaciones con alertas altas/críticas conocidas. Revisar los cambios antes de fusionarlos.
+Dependabot propone actualizaciones semanales. `npm audit --audit-level=moderate` bloquea publicaciones con alertas moderadas, altas o críticas conocidas. Revisar los cambios antes de fusionarlos.
 
 ## Imagen al compartir
 

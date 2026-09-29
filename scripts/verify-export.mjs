@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { createHash } from 'node:crypto';
 
 const directory = 'dist/client';
 const pages = ['index', 'hogar', 'oficina', 'quienes-somos', 'contacto'];
@@ -62,3 +63,47 @@ assert.ok(image.length < 5 * 1024 * 1024, 'Share image exceeds 5 MB');
 console.log(
   'Export verified: five pages, metadata, static scripts and referenced media.',
 );
+
+// Every executable inline script must be authorized by this document's CSP.
+const htaccess = readFileSync(join(directory, '.htaccess'), 'utf8');
+const policies = new Map(
+  [
+    ...htaccess.matchAll(
+      /<Files "([^"]+)">\s*Header always set Content-Security-Policy "([^"]+)"/g,
+    ),
+  ].map((match) => [match[1], match[2]]),
+);
+for (const name of readdirSync(directory).filter((name) =>
+  name.endsWith('.html'),
+)) {
+  const html = readFileSync(join(directory, name), 'utf8');
+  const policy = policies.get(name);
+  assert.ok(policy, name + ': missing page CSP');
+  assert.ok(
+    policy.includes("object-src 'none'") &&
+      policy.includes("frame-ancestors 'none'"),
+  );
+  assert.doesNotMatch(
+    policy.split(';').find((part) => part.trim().startsWith('script-src')),
+    /unsafe-inline|unsafe-eval/,
+  );
+  for (const match of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)) {
+    if (!match[1]) continue;
+    const hash = createHash('sha256').update(match[1]).digest('base64');
+    assert.ok(
+      policy.includes("'sha256-" + hash + "'"),
+      name + ': CSP blocks an inline script',
+    );
+  }
+  for (const match of html.matchAll(/srcset="([^"]+)"/g)) {
+    for (const candidate of match[1].split(', ')) {
+      const url = candidate.split(' ')[0];
+      const path = url.replace(/^.*?\/(media|responsive)\//, '$1/');
+      assert.ok(
+        readFileSync(join(directory, path)).length,
+        name + ': missing responsive image',
+      );
+    }
+  }
+}
+console.log('Security policies and responsive image files verified.');
