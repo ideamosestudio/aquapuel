@@ -17,7 +17,8 @@ function valid_text($value, int $limit, bool $required = true, bool $multiline =
     if (!is_string($value) || ($required && trim($value) === '')) {
         return false;
     }
-    if (preg_match_all('/./us', $value) > $limit || preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', $value)) {
+    $length = preg_match_all('/./us', $value);
+    if ($length === false || $length > $limit || preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', $value)) {
         return false;
     }
     return $multiline || !preg_match('/[\r\n]/', $value);
@@ -43,13 +44,20 @@ function reserve_request(string $directory, string $ip, int $now, int $perIp = 5
         return 503;
     }
     try {
-        $raw = stream_get_contents($handle);
+        // Bound memory use if a private ledger is damaged.
+        $raw = stream_get_contents($handle, 65537);
+        if ($raw === false || strlen($raw) > 65536) {
+            return 503;
+        }
         $state = $raw === '' ? ['salt' => bin2hex(random_bytes(32)), 'requests' => []] : json_decode($raw, true);
         if (!is_array($state) || !isset($state['salt'], $state['requests']) || !is_string($state['salt']) || !is_array($state['requests'])) {
             return 503;
         }
         $total = 0;
         foreach ($state['requests'] as $key => $times) {
+            if (!is_array($times)) {
+                return 503;
+            }
             $times = array_values(array_filter($times, static function ($time) use ($now) { return is_int($time) && $time > $now - 900; }));
             if (!$times) {
                 unset($state['requests'][$key]);
@@ -154,7 +162,15 @@ function handle_request(array $server, string $body, string $storage, callable $
         'Content-Type' => 'text/plain; charset=UTF-8',
         'Content-Transfer-Encoding' => 'quoted-printable',
     ];
-    $accepted = $deliver(RECIPIENT, 'AQUAPUEL - Nuevo pedido web', quoted_printable_encode(implode("\r\n", $lines)), $headers);
+    try {
+        $accepted = $deliver(RECIPIENT, 'AQUAPUEL - Nuevo pedido web', quoted_printable_encode(implode("\r\n", $lines)), $headers);
+    } catch (\Throwable $error) {
+        error_log('Aquapuel contact: mail transport exception.');
+        return response(503, false);
+    }
+    if (!$accepted) {
+        error_log('Aquapuel contact: mail transport rejected delivery.');
+    }
     return response($accepted ? 200 : 503, $accepted);
 }
 
